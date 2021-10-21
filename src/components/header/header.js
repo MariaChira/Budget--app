@@ -11,12 +11,9 @@ function Header() {
 
     function addActiveClass () {
         setIsActive(!isActive);
-        if (isActive === true){
-            
-        }
-        console.log(isActive);
+        
     }
-
+    console.log(isActive);
     
         
         
@@ -26,13 +23,12 @@ function Header() {
         <div className="header-container">
             <div className="wrapper">
                 <nav className="navbar">
-                    <Link onClick={addActiveClass} to="/" className="active">Home</Link>
-                    <Link to="/income" className="">Income</Link>
-                    <Link to="/expenses" className="">Expenses</Link>
-                    <Link to="/budget" className="">Budget</Link>
+                    <Link onClick={addActiveClass} to="/" className={isActive ? "active" : "" }>Home</Link>
+                    <Link onClick={addActiveClass} to="/income" className={isActive ? "active" : "" }>Income</Link>
+                    <Link onClick={addActiveClass} to="/expenses" className={isActive ? "active" : "" }>Expenses</Link>
+                    <Link onClick={addActiveClass} to="/budget" className={isActive ? "active" : "" }>Budget</Link>
                 </nav>
-                <h2>Budget App</h2>
-                <h6>"Never spend your money before you earned it"</h6>
+               
             </div>
 
             
