@@ -1,8 +1,12 @@
 import React from 'react';
+import "./expenses.css";
 
 
 const Expenses = () => {
-    return <div>Expenses</div>
+    return (
+    <div className="container-expenses">
+        Expenses</div>
+    )
 }
 
 export default Expenses;
