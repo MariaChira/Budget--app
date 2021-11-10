@@ -3,7 +3,7 @@ import React from "react"
 import "./home.css"
 import Button from "react-bootstrap/Button"
 import Jumbotron from "react-bootstrap/Jumbotron"
-import Carousel from 'react-bootstrap/Carousel'
+// import Carousel from 'react-bootstrap/Carousel'
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
         </p>
       </Jumbotron>
 
-      <Carousel fade>
+      {/* <Carousel fade>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -54,7 +54,7 @@ const Home = () => {
             </p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </div>
   )
 }

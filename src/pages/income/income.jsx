@@ -4,10 +4,15 @@ import './income.css'
 import AccordionComponent from '../../components/accordion/accordion';
 
 
+
 const Income = () => {
+
+    
     return (
         <div className="container-income">
-            <AccordionComponent />
+            <AccordionComponent>
+                
+            </AccordionComponent>
         
         </div>
     )
