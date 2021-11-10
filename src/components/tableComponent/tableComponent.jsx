@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table"
 
 const TableComponent = (data) => {
 
-  //  console.log(typeof(data))q
+  //  console.log(typeof(data))
       //  console.log(data)
        data.map(value => console.log(value))
 
