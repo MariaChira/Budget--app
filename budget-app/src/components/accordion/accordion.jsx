@@ -5,25 +5,7 @@ import { InputGroup, FormControl } from "react-bootstrap"
 import TableComponent from "../tableComponent/tableComponent"
 
 const AccordionComponent = () => {
-  const tableHeader = [
-    { income_name: "Income Name", month: "Month", year: "Year", day: "Day" },
-  ]
-
-  // const test = [2, 3, 4, 5]
-  // const isArr = test instanceof Array;
-  // const check =Array.isArray(test)
-  // console.log(check)
-  // const isArr = Object.prototype.toString.call(test) == '[object Array]';
-  // console.log(isArr)
-
-  const theadArray = Object.keys(tableHeader)
-  // console.log(theadArray)
-
-  function buildTableHeaderData() {
-    return Object.values(tableHeader)
-  }
-  // console.log(typeof(theadArray))
-
+ 
   return (
     <div>
       <Accordion defaultActiveKey="0">
@@ -33,11 +15,7 @@ const AccordionComponent = () => {
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              {theadArray.length > 0 ? (
-                <TableComponent data={buildTableHeaderData()} />
-              ) : (
-                <div style={{ color: "red" }}>Error!</div>
-              )}
+                <TableComponent />
               <InputGroup className="mb-3">
                 <InputGroup.Text> Salary 1</InputGroup.Text>
                 <FormControl aria-label="Monthly" />
