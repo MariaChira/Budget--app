@@ -1,0 +1,18 @@
+.jumbotron{
+ background-color: white;
+}
+
+h2{
+    margin: 0 0 10px;
+    text-transform: uppercase;
+  }
+  
+  h6{
+    margin: 0 0 15px;
+    color:#777;
+  }
+  
+  img {
+    width: 80%;
+    /* height: 300px; */
+  }

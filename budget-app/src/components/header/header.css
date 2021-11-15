@@ -1,0 +1,32 @@
+.wrapper {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.navbar {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 15px;
+  padding: 0px;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  border-radius: 50px;
+  /* position:relative; */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #777;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  color: rgb(15, 15, 15);
+}
+.navbar a.active {
+  color: rgb(221, 18, 18);
+}
