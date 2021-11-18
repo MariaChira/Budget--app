@@ -1,7 +1,7 @@
 import React from 'react';
 import './income.css'
 
-import AccordionComponent from '../../components/accordion/accordion';
+import AccordionIncome from '../../components/accordionIncome/accordionIncome';
 
 
 
@@ -10,9 +10,10 @@ const Income = () => {
     
     return (
         <div className="container-income">
-            <AccordionComponent>
-                
-            </AccordionComponent>
+            <div>
+                 <h6>You can name your income fiels. </h6>
+            </div>
+            <AccordionIncome/>
         
         </div>
     )

@@ -15,46 +15,15 @@ const Home = () => {
           <Button variant="dark">Learn more</Button>
         </p>
       </Jumbotron>
-
-      {/* <Carousel fade>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://cdn.pixabay.com/photo/2020/07/15/08/40/deer-5406930_960_720.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://cdn.pixabay.com/photo/2021/10/11/18/58/lake-6701636_960_720.jpg"
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://cdn.pixabay.com/photo/2021/09/28/05/05/bird-6663217_960_720.jpg"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel> */}
+    <div className="instruction-container">
+      <h6>TO REMEMBER!</h6>
+      <h6> 1. How many financial legs do you stand on? How many sources of income do you have? It is recommended at least 3 for a family. </h6>
+      <h6> 2. Do you only have active income? Then you are caught in the rat race. Build passive income in time.</h6>
+      <h6> 3. How much money goes through your hands in 12 months? On what do they go to and how many stop at you?</h6>
+      <h6> 4. How much is 1 day's work worth? Is it enough or can you do something for the better?</h6>
+      <h6> 5. Divide the money into categories / accounts / envelopes to separate and track expenses more easily.</h6>
+    </div>
+    
     </div>
   )
 }

@@ -1,40 +1,46 @@
 import React from "react"
 import Table from "react-bootstrap/Table"
 
-const TableComponent = (data) => {
+const TableComponent = () => {
 
-  //  console.log(typeof(data))
-      //  console.log(data)
-       data.map(value => console.log(value))
-
+  
   return (
     <div>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            {/* {data.map(th => (console.log(th)))} */}
-          {/* {data.map(th => <th key={th} style={{ textTransform: 'uppercase' }}>{th}</th>)} */}
+          <th>Income Name</th>
+          <th>Month</th>
+          <th>Year</th>
+          <th>Day</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>Ea</td>
+            <td>4000</td>
+            <td>4000x12</td>
+            <td>4000/21</td>
           </tr>
           <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>El</td>
+            <td>5000</td>
+            <td>5000x12</td>
+            <td>5000/21</td>
           </tr>
           <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>Bonusuri</td>
+            <td>2000</td>
+            <td>2000x12</td>
+            <td>2000/21</td>
           </tr>
-        </tbody> */}
+          <tr>
+            <td>Total</td>
+            <td>total</td>
+            <td>total</td>
+            <td>total</td>
+          </tr>
+        </tbody>
       </Table>
     </div>
   )

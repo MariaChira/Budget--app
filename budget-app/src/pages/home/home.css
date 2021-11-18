@@ -12,7 +12,10 @@ h2{
     color:#777;
   }
   
-  img {
-    width: 80%;
-    /* height: 300px; */
-  }
+.instruction-container {
+  width: 100%;
+  min-height: 300px;
+  padding: 20px;
+  
+}
+
