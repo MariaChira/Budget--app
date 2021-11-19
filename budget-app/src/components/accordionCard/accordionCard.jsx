@@ -2,7 +2,7 @@ import React from "react"
 import { Card, Accordion } from "react-bootstrap"
 
 const AccordionCard = (props) => {
-  console.log(props)
+ 
   return (
     <Card>
       <Accordion.Toggle as={Card.Header} eventKey={props.eventKeyNo}>

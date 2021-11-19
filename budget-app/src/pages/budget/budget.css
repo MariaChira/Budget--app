@@ -1,10 +1,10 @@
 .container-budget {
-    min-height: 300px;
+    min-height: 430px;
+   
 }
 .balance-container {
     width: 500px;
     height: 120px;
-    padding: 10px;
     border: 2px solid grey ;
     margin: 0 auto;
 }

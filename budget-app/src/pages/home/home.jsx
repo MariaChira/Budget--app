@@ -7,9 +7,9 @@ import Jumbotron from "react-bootstrap/Jumbotron"
 
 const Home = () => {
   return (
-    <div>
+    <div lassName="home-container">
       <Jumbotron>
-        <h2>Budget App</h2>
+        {/* <h2>Budget App</h2> */}
         <h6>"Never spend your money before you earned it"</h6>
         <p>
           <Button variant="dark">Learn more</Button>

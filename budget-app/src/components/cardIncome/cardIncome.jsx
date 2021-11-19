@@ -1,34 +1,64 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
-import InputGroup from "react-bootstrap/InputGroup"
-import { Container, FormControl } from "react-bootstrap"
+
+import { Container, FormControl, InputGroup } from "react-bootstrap"
 import "./cardIncome.css"
-import { useState } from "react"
+
 
 const CardIncome = (props) => {
-  
+  const [firstMonthlyIncome, setFirstMonthlyIncome] = useState()
   const [firstYearlyIncome, setFirstYearlyIncome] = useState()
   const [firstDailyIncome, setFirstDailyIncome] = useState()
 
+  const [secondMonthlyIncome, setSecondMonthlyIncome] = useState()
   const [secondYearlyIncome, setSecondYearlyIncome] = useState()
   const [secondDailyIncome, setSecondDailyIncome] = useState()
 
+  const [thirdMonthlyIncome, setThirdMonthlyIncome] = useState()
   const [thirdYearlyIncome, setThirdYearlyIncome] = useState()
   const [thirdDailyIncome, setThirdDailyIncome] = useState()
 
-  
+  const [totalMonthlyIncome, setTotalMonthlyIncome] = useState()
+  const [totalYearlyIncome, setTotalYearlyIncome] = useState()
+  const [totalDailyIncome, setTotalDailyIncome] = useState()
+
+  useEffect(() => {
+    const totalMonthly =
+      (firstMonthlyIncome > 0 ? firstMonthlyIncome : 0) +
+      (secondMonthlyIncome > 0 ? secondMonthlyIncome : 0) +
+      (thirdMonthlyIncome > 0 ? thirdMonthlyIncome : 0)
+    const totalYearly =
+      (firstYearlyIncome > 0 ? firstYearlyIncome : 0) +
+      (secondYearlyIncome > 0 ? secondYearlyIncome : 0) +
+      (thirdYearlyIncome > 0 ? thirdYearlyIncome : 0)
+    const totalDaily =
+      (firstYearlyIncome > 0 ? firstDailyIncome : 0) +
+      (secondDailyIncome > 0 ? secondDailyIncome : 0) +
+      (thirdDailyIncome > 0 ? thirdDailyIncome : 0)
+
+    setTotalMonthlyIncome(totalMonthly)
+    setTotalYearlyIncome(totalYearly)
+    setTotalDailyIncome(totalDaily)
+    const totalObj = { totalMonthly, totalYearly, totalDaily }
+    props.handleOnChange({ [props.id]: totalObj })
+    // sessionStorage.setItem("TotalIncome", JSON.stringify(totalObj))
+  }, [firstMonthlyIncome, secondMonthlyIncome, thirdMonthlyIncome])
+
   const handleOnChange = (whichOne, value) => {
-   
+    // props.handleOnChange(">>>>>>>>>>>>>>>>>>")
     switch (whichOne) {
       case "first-monthly-income":
+        setFirstMonthlyIncome(Number(value))
         setFirstYearlyIncome(Number(value) * 12)
         setFirstDailyIncome(Number(Math.round(value / 21)))
         break
       case "second-monthly-income":
+        setSecondMonthlyIncome(Number(value))
         setSecondYearlyIncome(Number(value) * 12)
         setSecondDailyIncome(Number(Math.round(value / 21)))
         break
       case "third-monthly-income":
+        setThirdMonthlyIncome(Number(value))
         setThirdYearlyIncome(Number(value) * 12)
         setThirdDailyIncome(Number(Math.round(value / 21)))
         break
@@ -38,17 +68,11 @@ const CardIncome = (props) => {
     }
   }
 
-  
-
-  const totalYearlyIncome  = firstYearlyIncome + secondYearlyIncome + thirdYearlyIncome
-  const totalDailyIncome  = firstDailyIncome + secondDailyIncome + thirdDailyIncome
-  
-
   return (
     <Container className="income-container">
       <InputGroup className="mb-1">
         <FormControl aria-label="Income Name" value="Income Name" disabled />
-        <FormControl aria-label="Month" value="Month" disabled />
+        <FormControl  aria-label="Month" value="Month" disabled />
         <FormControl aria-label="Year" value="Year" disabled />
         <FormControl aria-label="Day" Value="Day" disabled />
       </InputGroup>
@@ -66,8 +90,19 @@ const CardIncome = (props) => {
             handleOnChange("first-monthly-income", e.target.value)
           }
         />
-        <FormControl aria-label="Year" readOnly value={firstYearlyIncome} />
-        <FormControl aria-label="Day" readOnly value={firstDailyIncome} />
+        <FormControl
+       
+          aria-label="Year"
+          className="year-day"
+          readOnly
+          value={firstYearlyIncome}
+        />
+        <FormControl
+          aria-label="Day"
+          className="year-day"
+          readOnly
+          value={firstDailyIncome}
+        />
       </InputGroup>
 
       <InputGroup className="mb-1">
@@ -83,8 +118,18 @@ const CardIncome = (props) => {
             handleOnChange("second-monthly-income", e.target.value)
           }
         />
-        <FormControl aria-label="Year" readOnly value={secondYearlyIncome} />
-        <FormControl aria-label="Day" readOnly value={secondDailyIncome} />
+        <FormControl
+          aria-label="Year"
+          className="year-day"
+          readOnly
+          value={secondYearlyIncome}
+        />
+        <FormControl
+          aria-label="Day"
+          className="year-day"
+          readOnly
+          value={secondDailyIncome}
+        />
       </InputGroup>
 
       <InputGroup className="mb-1">
@@ -100,15 +145,37 @@ const CardIncome = (props) => {
             handleOnChange("third-monthly-income", e.target.value)
           }
         />
-        <FormControl aria-label="Year" readOnly value={thirdYearlyIncome} />
-        <FormControl aria-label="Day" readOnly value={thirdDailyIncome} />
+        <FormControl
+          aria-label="Year"
+          className="year-day"
+          readOnly
+          value={thirdYearlyIncome}
+        />
+        <FormControl
+          aria-label="Day"
+          className="year-day"
+          readOnly
+          value={thirdDailyIncome}
+        />
       </InputGroup>
 
       <InputGroup className="mb-1">
         <FormControl aria-label="total" value="Total" disabled />
-        <FormControl aria-label="total-month" value="total" />
-        <FormControl aria-label="total-year" readOnly value={totalYearlyIncome}  />
-        <FormControl aria-label="total-day"  readOnly value={totalDailyIncome} />
+        <FormControl
+          aria-label="total-month"
+          readOnly
+          value={totalMonthlyIncome ? totalMonthlyIncome : 0}
+        />
+        <FormControl
+          aria-label="total-year"
+          readOnly
+          value={totalYearlyIncome ? totalYearlyIncome : 0}
+        />
+        <FormControl
+          aria-label="total-day"
+          readOnly
+          value={totalDailyIncome ? totalDailyIncome : 0}
+        />
       </InputGroup>
     </Container>
   )

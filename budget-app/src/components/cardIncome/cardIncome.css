@@ -22,7 +22,21 @@ span.input-group-text{
 
 }
 
-input.form-control:disabled {
-    color: rgb(36, 35, 35);
+input.form-control{
+    display: flex;
+    text-align: center;
+    font-size: 1rem;
+}
+input.form-control:read-only{
+    pointer-events: none;
+    display: flex;
+    text-align: center;
+    color: rgb(88, 87, 87);
     background-color: rgb(247, 247, 247);
 }
+input.year-day.form-control {
+    background-color: rgb(255, 255, 255);
+}
+
+
+

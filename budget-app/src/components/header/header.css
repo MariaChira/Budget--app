@@ -1,6 +1,6 @@
 .wrapper {
   text-align: center;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .navbar {
@@ -28,5 +28,7 @@
   color: rgb(15, 15, 15);
 }
 .navbar a.active {
-  color: rgb(221, 18, 18);
+  font-size: 1.2rem;
+  color:#777;
+  font-weight:500;
 }

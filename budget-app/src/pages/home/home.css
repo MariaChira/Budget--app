@@ -1,21 +1,29 @@
+.home-container {
+  min-height: 430px;
+}
 .jumbotron{
+  height: 20vh;
  background-color: white;
 }
 
-h2{
-    margin: 0 0 10px;
+/* h2{
+    margin: 0 0 0px;
     text-transform: uppercase;
-  }
+  } */
   
-  h6{
-    margin: 0 0 15px;
+h6{
+    margin: 5px 15px;
     color:#777;
+  }
+  button {
+    margin: 5px 0 20px;
   }
   
 .instruction-container {
   width: 100%;
   min-height: 300px;
   padding: 20px;
+  margin-top: 100px;
   
 }
 
