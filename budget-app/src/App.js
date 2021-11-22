@@ -6,7 +6,8 @@ import Footer from "./components/footer/footer"
 import Expenses from "./pages/expenses/expenses"
 import Home from "./pages/home/home"
 import Income from "./pages/income/income"
-import Budget from "./pages/budget/budget"
+import Balance from "./pages/balance/balance"
+import FourZeroFour from "./pages/fourZeroFour/fourZeroFour"
 
 function App() {
   const links = [
@@ -30,23 +31,24 @@ function App() {
     },
     {
       key: "4",
-      path: "/budget",
-      label: "Budget",
-      component: () => <Budget />,
+      path: "/balance",
+      label: "Balance",
+      component: () => <Balance />,
     }
   ]
  
   return (
     <div>
+      
       <Router>
-        <Header links={links} />
+       <Header links={links} />
         <Switch>
           {links.map((link) => (
             <Route key={link.label} exact path={link.path}>
               {link.component}
             </Route>
           ))}
-          <Route>404 Page Not Found</Route>
+          <Route><FourZeroFour/></Route>
         </Switch>
         <Footer />
       </Router>

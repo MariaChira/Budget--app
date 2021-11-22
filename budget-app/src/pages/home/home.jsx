@@ -3,11 +3,11 @@ import React from "react"
 import "./home.css"
 import Button from "react-bootstrap/Button"
 import Jumbotron from "react-bootstrap/Jumbotron"
-// import Carousel from 'react-bootstrap/Carousel'
+
 
 const Home = () => {
   return (
-    <div lassName="home-container">
+    <div className="home-container">
       <Jumbotron>
         {/* <h2>Budget App</h2> */}
         <h6>"Never spend your money before you earned it"</h6>

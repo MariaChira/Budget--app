@@ -11,6 +11,7 @@ const AccordionCard = (props) => {
 
       <Accordion.Collapse eventKey={props.eventKeyNo}>
         <Card.Body>{props.children}</Card.Body>
+    
       </Accordion.Collapse>
     </Card>
   )
