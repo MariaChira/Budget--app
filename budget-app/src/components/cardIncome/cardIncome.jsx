@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react"
 
-
 import { Container, FormControl, InputGroup } from "react-bootstrap"
 import "./cardIncome.css"
-
 
 const CardIncome = (props) => {
   const [firstMonthlyIncome, setFirstMonthlyIncome] = useState()
@@ -22,6 +20,13 @@ const CardIncome = (props) => {
   const [totalYearlyIncome, setTotalYearlyIncome] = useState()
   const [totalDailyIncome, setTotalDailyIncome] = useState()
 
+  // useEffect(() => {
+  //   const storage = sessionStorage.getItem('incomeData');
+  //   const incomeData = JSON.parse(storage)
+  //   console.log(incomeData)
+  //   // setFirstDailyIncome(incomeData.incomeData.firstDailyIncome)
+  // }, [])
+
   useEffect(() => {
     const totalMonthly =
       (firstMonthlyIncome > 0 ? firstMonthlyIncome : 0) +
@@ -32,7 +37,7 @@ const CardIncome = (props) => {
       (secondYearlyIncome > 0 ? secondYearlyIncome : 0) +
       (thirdYearlyIncome > 0 ? thirdYearlyIncome : 0)
     const totalDaily =
-      (firstYearlyIncome > 0 ? firstDailyIncome : 0) +
+      (firstDailyIncome > 0 ? firstDailyIncome : 0) +
       (secondDailyIncome > 0 ? secondDailyIncome : 0) +
       (thirdDailyIncome > 0 ? thirdDailyIncome : 0)
 
@@ -41,7 +46,6 @@ const CardIncome = (props) => {
     setTotalDailyIncome(totalDaily)
     const totalObj = { totalMonthly, totalYearly, totalDaily }
     props.handleOnChange({ [props.id]: totalObj })
-    // sessionStorage.setItem("TotalIncome", JSON.stringify(totalObj))
   }, [firstMonthlyIncome, secondMonthlyIncome, thirdMonthlyIncome])
 
   const handleOnChange = (whichOne, value) => {
@@ -66,13 +70,28 @@ const CardIncome = (props) => {
       default:
         break
     }
+
+    const incomeObj = {
+      firstMonthlyIncome,
+      firstYearlyIncome,
+      firstDailyIncome,
+      secondMonthlyIncome,
+      secondYearlyIncome,
+      secondDailyIncome,
+      thirdMonthlyIncome,
+      thirdYearlyIncome,
+      thirdDailyIncome,
+    }
+    console.log(incomeObj)
+
+    sessionStorage.setItem("incomeData", JSON.stringify(incomeObj))
   }
 
   return (
     <Container className="income-container">
       <InputGroup className="mb-1">
         <FormControl aria-label="Income Name" value="Income Name" disabled />
-        <FormControl  aria-label="Month" value="Month" disabled />
+        <FormControl aria-label="Month" value="Month" disabled />
         <FormControl aria-label="Year" value="Year" disabled />
         <FormControl aria-label="Day" Value="Day" disabled />
       </InputGroup>
@@ -91,7 +110,6 @@ const CardIncome = (props) => {
           }
         />
         <FormControl
-       
           aria-label="Year"
           className="year-day"
           readOnly
@@ -182,3 +200,4 @@ const CardIncome = (props) => {
 }
 
 export default CardIncome
+

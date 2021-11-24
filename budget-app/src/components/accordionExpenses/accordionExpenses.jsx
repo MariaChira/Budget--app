@@ -3,20 +3,30 @@ import React from "react"
 import { Accordion } from "react-bootstrap"
 import AccordionCard from "../accordionCard/accordionCard"
 import CardExpenses from "../cardExpenses/cardExpenses"
-import { InputGroup, FormControl } from "react-bootstrap"
+
 import DescriptionCard from "../descriptionCard/descriptionCard"
+import ExpensesTotal from "./expensesTotal"
 
 let obj = {}
 
 const AccordionExpenses = () => {
+
+  const [expensesTotal, setExpensesTotal] = React.useState({})
+
   function contentChange(e) {
     obj = { ...obj, ...e }
     console.log(obj)
+    
+    if(obj.vital && obj.house && obj.transport && obj.investments && obj.charity && obj.other && obj.waisted){
+      const totalMonthly = obj.vital.totalMonthly + obj.house.totalMonthly + obj.transport.totalMonthly + obj.investments.totalMonthly + obj.charity.totalMonthly + obj.other.totalMonthly + obj.waisted.totalMonthly
+      const totalYearly =  obj.vital.totalYearly + obj.house.totalYearly + obj.transport.totalYearly + obj.investments.totalYearly + obj.charity.totalYearly + obj.other.totalYearly + obj.waisted.totalYearly
+      const totalDaily =  obj.vital.totalDaily + obj.house.totalDaily + obj.transport.totalDaily + obj.investments.totalDaily + obj.charity.totalDaily + obj.other.totalDaily + obj.waisted.totalDaily
+      setExpensesTotal({totalMonthly, totalYearly, totalDaily})
+    }
+    obj.totalExpenses = expensesTotal
     sessionStorage.setItem("totalExpenses", JSON.stringify(obj))
-
-    const sessionObj = sessionStorage.getItem("totalExpenses")
-    console.log(JSON.parse(sessionObj))
   }
+ 
   return (
     <div>
       <Accordion>
@@ -35,10 +45,7 @@ const AccordionExpenses = () => {
           <DescriptionCard text="ex: public transportation, car loan, fuel, insurance, vignette, tax, revision, repairs, car wash"/>
         </AccordionCard>
 
-        <AccordionCard
-          cardTitle="Investments and savings (3-5%)"
-          eventKeyNo="4"
-        >
+        <AccordionCard cardTitle="Investments and savings (3-5%)" eventKeyNo="4">
           <CardExpenses handleOnChange={contentChange} id="investments"/>
           <DescriptionCard text="ex: safety fund, emergency fund, education, retirement"/>
         </AccordionCard>
@@ -58,35 +65,9 @@ const AccordionExpenses = () => {
           <DescriptionCard text="ex: coffee, alchool, tobacco, bets "/>
         </AccordionCard>
       </Accordion>
+      <ExpensesTotal expensesTotal={expensesTotal}/>
 
-      {/* 
-      Values: 
-      Total: month: VITAL total month expenses + HOUSE total month expenses + ... + WAISTED MONEY total month expenses
-           : year: VITAL total year expenses + HOUSE total year expenses + ... + WAISTED MONEY total year expenses
-           : day :VITAL total days worked + HOUSE total days worked + ... + WAISTED MONEY total days worked
-       */}
-
-      <InputGroup className="mb-1">
-        <FormControl aria-label="total" value="Total Expenses" disabled />
-        <FormControl
-          aria-label="total-month"
-          placeholder= "month"
-          readOnly
-          value=""
-        />
-        <FormControl
-          aria-label="total-year"
-          placeholder= "year"
-          readOnly
-          value=""
-        />
-        <FormControl
-          aria-label="total-day"
-          placeholder= "day"
-          readOnly
-          value=""
-        />
-      </InputGroup>
+     
     </div>
   )
 }

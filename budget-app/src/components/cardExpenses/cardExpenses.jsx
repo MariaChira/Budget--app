@@ -41,13 +41,16 @@ const CardExpenses = (props) => {
     props.handleOnChange({ [props.id]: totalObj })
   }, [firstMonthlyExpenses, secondMonthlyExpenses, thirdMonthlyExpenses])
 
+  const storage = sessionStorage.getItem('totalIncome')
+  const totalIncome = JSON.parse(storage)
+
   const handleOnChange = (eitherOne, value) => {
-    
+    // console.log(">>>>>>>>>>", totalIncome.totalIncome.totalDaily)
     switch (eitherOne) {
       case "first-monthly-expenses":
         setFirstMonthlyExpenses(Number(value))
         setFirstYearlyExpenses(Number(value) * 12)
-        setFirstDailyExpenses(Number(Math.round(value / 21)))
+        setFirstDailyExpenses(Number(Math.round(totalIncome.totalIncome.totalDaily/21)))
         break
       case "second-monthly-expenses":
         setSecondMonthlyExpenses(Number(value))
@@ -64,6 +67,9 @@ const CardExpenses = (props) => {
         break
     }
   }
+
+// pentru Days Worked am nevoie sa impart Per Year din Expenses la Totalul Daily din Income (cel de jos, care aduna totalul activ si pasiv)
+
 
   return (
     <Container className="expenses-container">
