@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <Jumbotron>
-        <h6>"Never spend your money before you earned it"</h6>
+        <h5>"Never spend your money before you earned it"</h5>
         <p>
           <Button variant="dark">Learn more</Button>
         </p>
@@ -39,21 +39,21 @@ const Home = () => {
             <Col>
               <Card className="card-instruction">
                 <Card.Text>
-                  <h6> 3. How much money goes through your hands in 12 months? On what do they go to and how many stop at you?</h6>
+                  <h6> 4. How much money goes through your hands in 12 months? On what do they go to and how many stop at you?</h6>
                 </Card.Text>
               </Card>
             </Col>
             <Col>
               <Card className="card-instruction">
                 <Card.Text>
-                  <h6> 4. How much is 1 day's work worth? Is it enough or can you do something for the better? </h6>
+                  <h6> 5. Your safety fund should be your total month expenses * 6. Your emergency fund should be 1500-2000 RON </h6>
                 </Card.Text>
               </Card>
             </Col>
             <Col>
               <Card className="card-instruction" >
                 <Card.Text>
-                  <h6> 5. Divide the money into categories / accounts / envelopes to separate and track expenses more easily.</h6>
+                  <h6> 6. Divide the money into categories / accounts / envelopes to separate and track expenses more easily.</h6>
                 </Card.Text>
               </Card>
             </Col>

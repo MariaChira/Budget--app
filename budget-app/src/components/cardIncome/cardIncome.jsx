@@ -1,91 +1,70 @@
 import React, { useEffect, useState } from "react"
-
 import { Container, FormControl, InputGroup } from "react-bootstrap"
 import "./cardIncome.css"
 
 const CardIncome = (props) => {
-  const [firstMonthlyIncome, setFirstMonthlyIncome] = useState()
-  const [firstYearlyIncome, setFirstYearlyIncome] = useState()
-  const [firstDailyIncome, setFirstDailyIncome] = useState()
-
-  const [secondMonthlyIncome, setSecondMonthlyIncome] = useState()
-  const [secondYearlyIncome, setSecondYearlyIncome] = useState()
-  const [secondDailyIncome, setSecondDailyIncome] = useState()
-
-  const [thirdMonthlyIncome, setThirdMonthlyIncome] = useState()
-  const [thirdYearlyIncome, setThirdYearlyIncome] = useState()
-  const [thirdDailyIncome, setThirdDailyIncome] = useState()
-
-  const [totalMonthlyIncome, setTotalMonthlyIncome] = useState()
-  const [totalYearlyIncome, setTotalYearlyIncome] = useState()
-  const [totalDailyIncome, setTotalDailyIncome] = useState()
-
-  // useEffect(() => {
-  //   const storage = sessionStorage.getItem('incomeData');
-  //   const incomeData = JSON.parse(storage)
-  //   console.log(incomeData)
-  //   // setFirstDailyIncome(incomeData.incomeData.firstDailyIncome)
-  // }, [])
+  const incomeObj = {
+    daily: [0, 0, 0],
+    monthly: [0, 0, 0],
+    yearly: [0, 0, 0],
+    total: {
+      daily: 0,
+      monthly: 0,
+      yearly: 0,
+    },
+  }
+  const [incomeUserData, setIncomeUserData] = useState(incomeObj)
 
   useEffect(() => {
-    const totalMonthly =
-      (firstMonthlyIncome > 0 ? firstMonthlyIncome : 0) +
-      (secondMonthlyIncome > 0 ? secondMonthlyIncome : 0) +
-      (thirdMonthlyIncome > 0 ? thirdMonthlyIncome : 0)
-    const totalYearly =
-      (firstYearlyIncome > 0 ? firstYearlyIncome : 0) +
-      (secondYearlyIncome > 0 ? secondYearlyIncome : 0) +
-      (thirdYearlyIncome > 0 ? thirdYearlyIncome : 0)
-    const totalDaily =
-      (firstDailyIncome > 0 ? firstDailyIncome : 0) +
-      (secondDailyIncome > 0 ? secondDailyIncome : 0) +
-      (thirdDailyIncome > 0 ? thirdDailyIncome : 0)
-
-    setTotalMonthlyIncome(totalMonthly)
-    setTotalYearlyIncome(totalYearly)
-    setTotalDailyIncome(totalDaily)
-    const totalObj = { totalMonthly, totalYearly, totalDaily }
-    props.handleOnChange({ [props.id]: totalObj })
-  }, [firstMonthlyIncome, secondMonthlyIncome, thirdMonthlyIncome])
+    const incomeData = JSON.parse(
+      sessionStorage.getItem(`income${props.incomeType}`)
+    )
+    if (incomeData) {
+      setIncomeUserData(incomeData)
+    }
+  }, [])
 
   const handleOnChange = (whichOne, value) => {
+    const tempObj = { ...incomeUserData }
     // props.handleOnChange(">>>>>>>>>>>>>>>>>>")
     switch (whichOne) {
       case "first-monthly-income":
-        setFirstMonthlyIncome(Number(value))
-        setFirstYearlyIncome(Number(value) * 12)
-        setFirstDailyIncome(Number(Math.round(value / 21)))
+        tempObj.monthly[0] = value ? Number(value) : 0
+        tempObj.yearly[0] = value ? Number(value) * 12 : 0
+        tempObj.daily[0] = value ? Number(Math.round(value / 21)) : 0
         break
       case "second-monthly-income":
-        setSecondMonthlyIncome(Number(value))
-        setSecondYearlyIncome(Number(value) * 12)
-        setSecondDailyIncome(Number(Math.round(value / 21)))
+        tempObj.monthly[1] = value ? Number(value) : 0
+        tempObj.yearly[1] = value ? Number(value) * 12 : 0
+        tempObj.daily[1] = value ? Number(Math.round(value / 21)) : 0
         break
       case "third-monthly-income":
-        setThirdMonthlyIncome(Number(value))
-        setThirdYearlyIncome(Number(value) * 12)
-        setThirdDailyIncome(Number(Math.round(value / 21)))
+        tempObj.monthly[2] = value ? Number(value) : 0
+        tempObj.yearly[2] = value ? Number(value) * 12 : 0
+        tempObj.daily[2] = value ? Number(Math.round(value / 21)) : 0
         break
 
       default:
         break
     }
 
-    const incomeObj = {
-      firstMonthlyIncome,
-      firstYearlyIncome,
-      firstDailyIncome,
-      secondMonthlyIncome,
-      secondYearlyIncome,
-      secondDailyIncome,
-      thirdMonthlyIncome,
-      thirdYearlyIncome,
-      thirdDailyIncome,
+    const totalMonthly = tempObj.monthly.reduce(
+      (prev, current) => prev + current
+    )
+    const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
+    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current)
+    console.log({ totalMonthly, totalYearly, totalDaily })
+    tempObj.total = {
+      daily: totalDaily,
+      monthly: totalMonthly,
+      yearly: totalYearly,
     }
-    console.log(incomeObj)
-
-    sessionStorage.setItem("incomeData", JSON.stringify(incomeObj))
+    setIncomeUserData(tempObj)
+    if (props.handleOnChange && props.id)
+      props.handleOnChange(tempObj, props.id)
   }
+
+  console.log({ incomeUserData, incomeType: props.incomeType })
 
   return (
     <Container className="income-container">
@@ -104,7 +83,7 @@ const CardIncome = (props) => {
         />
         <FormControl
           aria-label="Month"
-          placeholder="Monthly Income"
+          placeholder={incomeUserData?.monthly[0] || "Monthly Income"}
           onChange={(e) =>
             handleOnChange("first-monthly-income", e.target.value)
           }
@@ -113,13 +92,13 @@ const CardIncome = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={firstYearlyIncome}
+          value={incomeUserData.yearly[0]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={firstDailyIncome}
+          value={incomeUserData.daily[0]}
         />
       </InputGroup>
 
@@ -131,7 +110,7 @@ const CardIncome = (props) => {
         />
         <FormControl
           aria-label="Month"
-          placeholder="Monthly Income"
+          placeholder={incomeUserData?.monthly[1] || "Monthly Income"}
           onChange={(e) =>
             handleOnChange("second-monthly-income", e.target.value)
           }
@@ -140,13 +119,13 @@ const CardIncome = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={secondYearlyIncome}
+          value={incomeUserData.yearly[1]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={secondDailyIncome}
+          value={incomeUserData.daily[1]}
         />
       </InputGroup>
 
@@ -158,7 +137,7 @@ const CardIncome = (props) => {
         />
         <FormControl
           aria-label="Month"
-          placeholder="Monthly Income"
+          placeholder={incomeUserData?.monthly[2] || "Monthly Income"}
           onChange={(e) =>
             handleOnChange("third-monthly-income", e.target.value)
           }
@@ -167,13 +146,13 @@ const CardIncome = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={thirdYearlyIncome}
+          value={incomeUserData.yearly[2]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={thirdDailyIncome}
+          value={incomeUserData.daily[2]}
         />
       </InputGroup>
 
@@ -182,17 +161,17 @@ const CardIncome = (props) => {
         <FormControl
           aria-label="total-month"
           readOnly
-          value={totalMonthlyIncome ? totalMonthlyIncome : 0}
+          value={incomeUserData.total.monthly}
         />
         <FormControl
           aria-label="total-year"
           readOnly
-          value={totalYearlyIncome ? totalYearlyIncome : 0}
+          value={incomeUserData.total.yearly}
         />
         <FormControl
           aria-label="total-day"
           readOnly
-          value={totalDailyIncome ? totalDailyIncome : 0}
+          value={incomeUserData.total.daily}
         />
       </InputGroup>
     </Container>
@@ -200,4 +179,3 @@ const CardIncome = (props) => {
 }
 
 export default CardIncome
-
