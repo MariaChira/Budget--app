@@ -86,7 +86,7 @@ const CardExpenses = (props) => {
         />
         <FormControl aria-label="Month" value="Month" disabled />
         <FormControl aria-label="Year" value="Year" disabled />
-        <FormControl aria-label="Day" Value="Day" disabled />
+        <FormControl aria-label="Day" Value="Days Worked" disabled />
       </InputGroup>
 
       <InputGroup className="mb-1">
