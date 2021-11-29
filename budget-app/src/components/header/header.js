@@ -1,14 +1,18 @@
 import "./header.css"
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
 function Header(props) {
- 
+  const incomeTotal = JSON.parse(sessionStorage.getItem("incomeTotal"))
+
   return (
     <div className="header-container">
       <div className="wrapper">
         <nav className="navbar">
           {props.links.map((links) => (
-            <NavLink exact to={links.path} name={links.label} key={links.key}> {links.label} </NavLink>
+            <NavLink exact to={links.path} name={links.label} key={links.key}>
+              {" "}
+              {links.label}{" "}
+            </NavLink>
           ))}
         </nav>
       </div>

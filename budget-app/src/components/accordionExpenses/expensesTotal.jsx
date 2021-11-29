@@ -10,19 +10,19 @@ const ExpensesTotal = ({ expensesTotal }) => (
           aria-label="total-month"
           placeholder= "month"
           readOnly
-          value={expensesTotal.totalMonthly || 0}
+          value={expensesTotal?.totalMonthly || 0}
         />
         <FormControl
           aria-label="total-year"
           placeholder= "year"
           readOnly
-          value={expensesTotal.totalYearly || 0}
+          value={expensesTotal?.totalYearly || 0}
         />
         <FormControl
           aria-label="total-day"
           placeholder= "day"
           readOnly
-          value={expensesTotal.totalDaily || 0}
+          value={expensesTotal?.totalDaily || 0}
         />
       </InputGroup>
     )

@@ -4,91 +4,100 @@ import { useState, useEffect } from "react"
 import { Container, InputGroup, FormControl } from "react-bootstrap"
 
 const CardExpenses = (props) => {
-  const [firstMonthlyExpenses, setFirstMonthlyExpenses] = useState()
-  const [firstYearlyExpenses, setFirstYearlyExpenses] = useState()
-  const [firstDailyExpenses, setFirstDailyExpenses] = useState()
+  const expensesObj = {
+    daily: [0, 0, 0],
+    monthly: [0, 0, 0],
+    yearly: [0, 0, 0],
+    total: {
+      daily: 0,
+      monthly: 0,
+      yearly: 0,
+    },
+  }
 
-  const [secondMonthlyExpenses, setSecondMonthlyExpenses] = useState()
-  const [secondYearlyExpenses, setSecondYearlyExpenses] = useState()
-  const [secondDailyExpenses, setSecondDailyExpenses] = useState()
-
-  const [thirdMonthlyExpenses, setThirdMonthlyExpenses] = useState()
-  const [thirdYearlyExpenses, setThirdYearlyExpenses] = useState()
-  const [thirdDailyExpenses, setThirdDailyExpenses] = useState()
-
-  const [totalMonthlyExpenses, setTotalMonthlyExpenses] = useState()
-  const [totalYearlyExpenses, setTotalYearlyExpenses] = useState()
-  const [totalDailyExpenses, setTotalDailyExpenses] = useState()
+  const [expensesUserData, setExpensesUserData] = useState(expensesObj)
+  const incomeTotalData = JSON.parse(sessionStorage.getItem("incomeTotal"))
 
   useEffect(() => {
-    const totalMonthly =
-      (firstMonthlyExpenses > 0 ? firstMonthlyExpenses : 0) +
-      (secondMonthlyExpenses > 0 ? secondMonthlyExpenses : 0) +
-      (thirdMonthlyExpenses > 0 ? thirdMonthlyExpenses : 0)
-    const totalYearly =
-      (firstYearlyExpenses > 0 ? firstYearlyExpenses : 0) +
-      (secondYearlyExpenses > 0 ? secondYearlyExpenses : 0) +
-      (thirdYearlyExpenses > 0 ? thirdYearlyExpenses : 0)
-    const totalDaily =
-      (firstYearlyExpenses > 0 ? firstDailyExpenses : 0) +
-      (secondDailyExpenses > 0 ? secondDailyExpenses : 0) +
-      (thirdDailyExpenses > 0 ? thirdDailyExpenses : 0)
+    const expensesData = JSON.parse(
+      sessionStorage.getItem(`expenses${props.expensesType}`)
+    )
+    if (expensesData) {
+      setExpensesUserData(expensesData)
+    }
+  }, [])
 
-    setTotalMonthlyExpenses(totalMonthly)
-    setTotalYearlyExpenses(totalYearly)
-    setTotalDailyExpenses(totalDaily)
-    const totalObj = { totalMonthly, totalYearly, totalDaily }
-    props.handleOnChange({ [props.id]: totalObj })
-  }, [firstMonthlyExpenses, secondMonthlyExpenses, thirdMonthlyExpenses])
-
-  const storage = sessionStorage.getItem('totalIncome')
-  const totalIncome = JSON.parse(storage)
-
-  const handleOnChange = (eitherOne, value) => {
-    // console.log(">>>>>>>>>>", totalIncome.totalIncome.totalDaily)
-    switch (eitherOne) {
+  const handleOnChange = (whichOne, value) => {
+    const tempObj = { ...expensesUserData }
+    let incomeTotalDaily = 0
+    if (incomeTotalData) incomeTotalDaily = incomeTotalData.totalDaily
+    switch (whichOne) {
       case "first-monthly-expenses":
-        setFirstMonthlyExpenses(Number(value))
-        setFirstYearlyExpenses(Number(value) * 12)
-        setFirstDailyExpenses(Number(Math.round(totalIncome.totalIncome.totalDaily/21)))
+        tempObj.monthly[0] = value ? Number(value) : 0
+        tempObj.yearly[0] = value ? Number(value) * 12 : 0
+        tempObj.daily[0] = value
+          ? Number(Math.round(tempObj.yearly[0] / incomeTotalDaily))
+          : 0
         break
       case "second-monthly-expenses":
-        setSecondMonthlyExpenses(Number(value))
-        setSecondYearlyExpenses(Number(value) * 12)
-        setSecondDailyExpenses(Number(Math.round(value / 21)))
+        tempObj.monthly[1] = value ? Number(value) : 0
+        tempObj.yearly[1] = value ? Number(value) * 12 : 0
+        tempObj.daily[1] = value
+          ? Number(Math.round(tempObj.yearly[1] / incomeTotalDaily))
+          : 0
         break
       case "third-monthly-expenses":
-        setThirdMonthlyExpenses(Number(value))
-        setThirdYearlyExpenses(Number(value) * 12)
-        setThirdDailyExpenses(Number(Math.round(value / 21)))
+        tempObj.monthly[2] = value ? Number(value) : 0
+        tempObj.yearly[2] = value ? Number(value) * 12 : 0
+        tempObj.daily[2] = value
+          ? Number(Math.round(tempObj.yearly[2] / incomeTotalDaily))
+          : 0
         break
 
       default:
         break
     }
+
+    const totalMonthly = tempObj.monthly.reduce(
+      (prev, current) => prev + current
+    )
+    const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
+    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current)
+    // console.log({ totalMonthly, totalYearly, totalDaily })
+    tempObj.total = {
+      daily: totalDaily,
+      monthly: totalMonthly,
+      yearly: totalYearly,
+    }
+    setExpensesUserData(tempObj)
+    if (props.handleOnChange && props.expensesType)
+      props.handleOnChange(tempObj, props.expensesType)
   }
 
-// pentru Days Worked am nevoie sa impart Per Year din Expenses la Totalul Daily din Income (cel de jos, care aduna totalul activ si pasiv)
-
+  // console.log({ expensesUserData, expensesType: props.expensesType })
 
   return (
     <Container className="expenses-container">
       <InputGroup className="mb-1">
-        <FormControl aria-label="Expense Name" value="Expense Name" disabled />
-        <FormControl aria-label="Month" value="Per Month" disabled />
-        <FormControl aria-label="Year" value="Per Year" disabled />
-        <FormControl aria-label="Day" Value="Days Worked" disabled />
+        <FormControl
+          aria-label="Expenses Name"
+          value="Expenses Name"
+          disabled
+        />
+        <FormControl aria-label="Month" value="Month" disabled />
+        <FormControl aria-label="Year" value="Year" disabled />
+        <FormControl aria-label="Day" Value="Day" disabled />
       </InputGroup>
 
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="expense name"
-          onChange={(e) => handleOnChange("name-expense", e.target.value)}
+          placeholder="Expenses Name"
+          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder="your expense"
+          placeholder={expensesUserData?.monthly[0] || "Monthly Expenses"}
           onChange={(e) =>
             handleOnChange("first-monthly-expenses", e.target.value)
           }
@@ -97,25 +106,25 @@ const CardExpenses = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={firstYearlyExpenses}
+          value={expensesUserData.yearly[0]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={firstDailyExpenses}
+          value={expensesUserData.daily[0]}
         />
       </InputGroup>
 
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="expense name"
-          onChange={(e) => handleOnChange("name-expense", e.target.value)}
+          placeholder="Expenses Name"
+          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder="your expense"
+          placeholder={expensesUserData?.monthly[1] || "Monthly Expenses"}
           onChange={(e) =>
             handleOnChange("second-monthly-expenses", e.target.value)
           }
@@ -124,25 +133,25 @@ const CardExpenses = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={secondYearlyExpenses}
+          value={expensesUserData.yearly[1]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={secondDailyExpenses}
+          value={expensesUserData.daily[1]}
         />
       </InputGroup>
 
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="expense name"
-          onChange={(e) => handleOnChange("name-expense", e.target.value)}
+          placeholder="Expenses Name"
+          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder="your expense"
+          placeholder={expensesUserData?.monthly[2] || "Monthly Expenses"}
           onChange={(e) =>
             handleOnChange("third-monthly-expenses", e.target.value)
           }
@@ -151,13 +160,13 @@ const CardExpenses = (props) => {
           aria-label="Year"
           className="year-day"
           readOnly
-          value={thirdYearlyExpenses}
+          value={expensesUserData.yearly[2]}
         />
         <FormControl
           aria-label="Day"
           className="year-day"
           readOnly
-          value={thirdDailyExpenses}
+          value={expensesUserData.daily[2]}
         />
       </InputGroup>
 
@@ -166,17 +175,17 @@ const CardExpenses = (props) => {
         <FormControl
           aria-label="total-month"
           readOnly
-          value={totalMonthlyExpenses ? totalMonthlyExpenses : 0}
+          value={expensesUserData.total.monthly}
         />
         <FormControl
           aria-label="total-year"
           readOnly
-          value={totalYearlyExpenses ? totalYearlyExpenses : 0}
+          value={expensesUserData.total.yearly}
         />
         <FormControl
           aria-label="total-day"
           readOnly
-          value={totalDailyExpenses ? totalDailyExpenses : 0}
+          value={expensesUserData.total.daily}
         />
       </InputGroup>
     </Container>

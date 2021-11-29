@@ -26,7 +26,7 @@ const CardIncome = (props) => {
 
   const handleOnChange = (whichOne, value) => {
     const tempObj = { ...incomeUserData }
-    // props.handleOnChange(">>>>>>>>>>>>>>>>>>")
+
     switch (whichOne) {
       case "first-monthly-income":
         tempObj.monthly[0] = value ? Number(value) : 0
@@ -53,18 +53,18 @@ const CardIncome = (props) => {
     )
     const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
     const totalDaily = tempObj.daily.reduce((prev, current) => prev + current)
-    console.log({ totalMonthly, totalYearly, totalDaily })
+
     tempObj.total = {
       daily: totalDaily,
       monthly: totalMonthly,
       yearly: totalYearly,
     }
     setIncomeUserData(tempObj)
-    if (props.handleOnChange && props.id)
-      props.handleOnChange(tempObj, props.id)
+    if (props.handleOnChange && props.incomeType)
+      props.handleOnChange(tempObj, props.incomeType)
   }
 
-  console.log({ incomeUserData, incomeType: props.incomeType })
+  console.log({ incomeUserData })
 
   return (
     <Container className="income-container">

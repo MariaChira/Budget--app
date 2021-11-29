@@ -10,19 +10,19 @@ const IncomeTotal = ({ incomeTotal }) => (
           aria-label="total-month"
           placeholder= "month"
           readOnly
-          value={incomeTotal.totalMonthly || 0}
+          value={incomeTotal?.totalMonthly || 0}
         />
         <FormControl
           aria-label="total-year"
           placeholder= "year"
           readOnly
-          value={incomeTotal.totalYearly || 0}
+          value={incomeTotal?.totalYearly || 0}
         />
         <FormControl
           aria-label="total-day"
           placeholder= "day"
           readOnly
-          value={incomeTotal.totalDaily || 0}
+          value={incomeTotal?.totalDaily || 0}
         />
       </InputGroup>
     )
