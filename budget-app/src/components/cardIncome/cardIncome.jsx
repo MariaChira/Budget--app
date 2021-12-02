@@ -7,6 +7,7 @@ const CardIncome = (props) => {
     daily: [0, 0, 0],
     monthly: [0, 0, 0],
     yearly: [0, 0, 0],
+    name: ["", "", ""],
     total: {
       daily: 0,
       monthly: 0,
@@ -43,11 +44,16 @@ const CardIncome = (props) => {
         tempObj.yearly[2] = value ? Number(value) * 12 : 0
         tempObj.daily[2] = value ? Number(Math.round(value / 21)) : 0
         break
-
+      case "name-income-0":
+      case "name-income-1":
+      case "name-income-2":
+        console.log(whichOne.slice(-1), value)
+        const index = whichOne.slice(-1)
+        tempObj.name[Number(index)] = value
+        break
       default:
         break
     }
-    
 
     const totalMonthly = tempObj.monthly.reduce(
       (prev, current) => prev + current
@@ -65,8 +71,8 @@ const CardIncome = (props) => {
       props.handleOnChange(tempObj, props.incomeType)
   }
 
-  // console.log({ incomeUserData })
   
+
   return (
     <Container className="income-container">
       <InputGroup className="mb-1">
@@ -79,12 +85,11 @@ const CardIncome = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Income Name"
-          onChange={(e) =>{
-            handleOnChange("name-income", e.target.value)
+          placeholder={incomeUserData?.name[0] || "Income Name"}
+          onChange={(e) => {
+            handleOnChange("name-income-0", e.target.value)
             console.log(e.target.value)
-          } 
-        }
+          }}
         />
         <FormControl
           aria-label="Month"
@@ -110,8 +115,8 @@ const CardIncome = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Income Name"
-          onChange={(e) => handleOnChange("name-income", e.target.value)}
+          placeholder={incomeUserData?.name[1] || "Income Name"}
+          onChange={(e) => handleOnChange("name-income-1", e.target.value)}
         />
         <FormControl
           aria-label="Month"
@@ -137,8 +142,8 @@ const CardIncome = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Income Name"
-          onChange={(e) => handleOnChange("name-income", e.target.value)}
+          placeholder={incomeUserData?.name[2] || "Income Name"}
+          onChange={(e) => handleOnChange("name-income-2", e.target.value)}
         />
         <FormControl
           aria-label="Month"

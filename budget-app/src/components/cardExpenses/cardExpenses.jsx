@@ -8,6 +8,7 @@ const CardExpenses = (props) => {
     daily: [0, 0, 0],
     monthly: [0, 0, 0],
     yearly: [0, 0, 0],
+    name: ["", "", ""],
     total: {
       daily: 0,
       monthly: 0,
@@ -54,6 +55,13 @@ const CardExpenses = (props) => {
           ? Number(Math.round(tempObj.yearly[2] / incomeTotalDaily))
           : 0
         break
+        case "name-expenses-0":
+        case "name-expenses-1":
+        case "name-expenses-2":
+        console.log(whichOne.slice(-1), value)
+        const index = whichOne.slice(-1)
+        tempObj.name[Number(index)] = value
+        break;
 
       default:
         break
@@ -65,8 +73,7 @@ const CardExpenses = (props) => {
       (prev, current) => prev + current
     )
     const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
-    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current)
-    // console.log({ totalMonthly, totalYearly, totalDaily })
+    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current) 
     tempObj.total = {
       daily: totalDaily,
       monthly: totalMonthly,
@@ -78,8 +85,8 @@ const CardExpenses = (props) => {
   }
  
 
-  console.log(expensesUserData.daily[0])
-  // console.log({ expensesUserData, expensesType: props.expensesType })
+
+  
 
   return (
     <Container className="expenses-container">
@@ -97,8 +104,8 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Expenses Name"
-          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
+          placeholder={expensesUserData?.name[0] || "Expense Name"}
+          onChange={(e) => handleOnChange("name-expenses-0", e.target.value)}
         />
         <FormControl
           aria-label="Month"
@@ -124,8 +131,8 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Expenses Name"
-          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
+          placeholder={expensesUserData?.name[1] || "Expense Name"}
+          onChange={(e) => handleOnChange("name-expenses-1", e.target.value)}
         />
         <FormControl
           aria-label="Month"
@@ -151,8 +158,8 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder="Expenses Name"
-          onChange={(e) => handleOnChange("name-Expenses", e.target.value)}
+          placeholder={expensesUserData?.name[2] || "Expense Name"}
+          onChange={(e) => handleOnChange("name-expenses-2", e.target.value)}
         />
         <FormControl
           aria-label="Month"

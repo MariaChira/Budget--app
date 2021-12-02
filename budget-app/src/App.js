@@ -41,6 +41,7 @@ function App() {
     daily: [0, 0, 0],
     monthly: [0, 0, 0],
     yearly: [0, 0, 0],
+    name: ["", "", ""],
     total: {
       daily: 0,
       monthly: 0,
