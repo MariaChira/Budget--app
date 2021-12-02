@@ -25,6 +25,7 @@ const CardExpenses = (props) => {
     if (expensesData) {
       setExpensesUserData(expensesData)
     }
+   
   }, [])
 
   const handleOnChange = (whichOne, value) => {
@@ -58,6 +59,8 @@ const CardExpenses = (props) => {
         break
     }
 
+    
+
     const totalMonthly = tempObj.monthly.reduce(
       (prev, current) => prev + current
     )
@@ -73,7 +76,9 @@ const CardExpenses = (props) => {
     if (props.handleOnChange && props.expensesType)
       props.handleOnChange(tempObj, props.expensesType)
   }
+ 
 
+  console.log(expensesUserData.daily[0])
   // console.log({ expensesUserData, expensesType: props.expensesType })
 
   return (
@@ -86,7 +91,7 @@ const CardExpenses = (props) => {
         />
         <FormControl aria-label="Month" value="Month" disabled />
         <FormControl aria-label="Year" value="Year" disabled />
-        <FormControl aria-label="Day" Value="Days Worked" disabled />
+        <FormControl aria-label="Day" value="Days Worked" disabled />
       </InputGroup>
 
       <InputGroup className="mb-1">

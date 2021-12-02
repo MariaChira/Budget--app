@@ -47,6 +47,7 @@ const CardIncome = (props) => {
       default:
         break
     }
+    
 
     const totalMonthly = tempObj.monthly.reduce(
       (prev, current) => prev + current
@@ -64,22 +65,26 @@ const CardIncome = (props) => {
       props.handleOnChange(tempObj, props.incomeType)
   }
 
-  console.log({ incomeUserData })
-
+  // console.log({ incomeUserData })
+  
   return (
     <Container className="income-container">
       <InputGroup className="mb-1">
         <FormControl aria-label="Income Name" value="Income Name" disabled />
         <FormControl aria-label="Month" value="Month" disabled />
         <FormControl aria-label="Year" value="Year" disabled />
-        <FormControl aria-label="Day" Value="Day" disabled />
+        <FormControl aria-label="Day" value="Day" disabled />
       </InputGroup>
 
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
           placeholder="Income Name"
-          onChange={(e) => handleOnChange("name-income", e.target.value)}
+          onChange={(e) =>{
+            handleOnChange("name-income", e.target.value)
+            console.log(e.target.value)
+          } 
+        }
         />
         <FormControl
           aria-label="Month"

@@ -19,7 +19,7 @@ const AccordionIncome = () => {
     const totalMonthly = activeIncome?.total.monthly + pasiveIncome?.total.monthly
     const totalDaily = activeIncome?.total.daily + pasiveIncome?.total.daily
     const totalYearly = activeIncome?.total.yearly + pasiveIncome?.total.yearly
-    console.log({ totalMonthly, totalDaily, totalYearly })
+    // console.log({ totalMonthly, totalDaily, totalYearly })
     setIncomeTotal({ totalMonthly, totalDaily, totalYearly })
     sessionStorage.setItem(
       "incomeTotal",
@@ -28,7 +28,7 @@ const AccordionIncome = () => {
     // console.log({ activeIncome, pasiveIncome })
   }
 
-  console.log(incomeTotal)
+  // console.log(incomeTotal)
 
   return (
     <div>

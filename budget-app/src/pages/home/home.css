@@ -7,7 +7,7 @@
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   margin: 5px 15px;
   color: #777;
 }
@@ -28,10 +28,18 @@ button {
 }
 
 .card-instruction {
+  max-width: 25vw;
   width: 30vw;
   height: 200px;
-  font-size: 1rem;
   margin: 10px auto;
   border-radius: 20px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 850px){
+  .card-instruction {
+    min-width: 300px;
+    height: 200px;
+   
+  }
 }
