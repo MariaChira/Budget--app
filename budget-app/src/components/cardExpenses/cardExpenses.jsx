@@ -85,9 +85,6 @@ const CardExpenses = (props) => {
   }
  
 
-
-  
-
   return (
     <Container className="expenses-container">
       <InputGroup className="mb-1">

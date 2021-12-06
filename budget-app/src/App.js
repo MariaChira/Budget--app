@@ -1,4 +1,7 @@
 import React, { useEffect } from "react"
+
+
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import Header from "./components/header/header"
@@ -8,6 +11,14 @@ import Home from "./pages/home/home"
 import Income from "./pages/income/income"
 import Balance from "./pages/balance/balance"
 import FourZeroFour from "./pages/fourZeroFour/fourZeroFour"
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faCheckSquare, faCoffee)
+
+
 
 function App() {
   const links = [
@@ -63,6 +74,7 @@ function App() {
 
   return (
     <div>
+      
       <Router>
         <Header links={links} />
         <Switch>

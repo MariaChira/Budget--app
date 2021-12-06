@@ -17,7 +17,7 @@ const Balance = () => {
         <FormControl aria-label="Labels" disabled />
         <FormControl aria-label="Month" value="Per Month" disabled />
         <FormControl aria-label="Year" value="Per Year" disabled />
-        <FormControl aria-label="Day" Value="Per Day" disabled />
+        <FormControl aria-label="Day" value="Per Day" disabled />
       </InputGroup>
         <InputGroup className="mb-1">
           <FormControl aria-label="total" value="Total Income" disabled />
@@ -78,7 +78,7 @@ const Balance = () => {
         <FormControl aria-label="Labels"  disabled />
         <FormControl aria-label="Month" value="Per Month" disabled />
         <FormControl aria-label="Year" value="Per Year" disabled />
-        <FormControl aria-label="Day" Value="Days Left" disabled />
+        <FormControl aria-label="Day" value="Days Left" disabled />
       </InputGroup>
         <InputGroup className="mb-1">
           <FormControl aria-label="total" value="Balance" disabled />

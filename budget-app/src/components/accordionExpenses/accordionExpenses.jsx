@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect }from "react"
 
 import { Accordion } from "react-bootstrap"
 import AccordionCard from "../accordionCard/accordionCard"
@@ -8,13 +8,14 @@ import DescriptionCard from "../descriptionCard/descriptionCard"
 import ExpensesTotal from "./expensesTotal"
 
 const AccordionExpenses = () => {
+ 
   const storedExpensesTotal = JSON.parse(
     sessionStorage.getItem("expensesTotal")
   )
-  const [expensesTotal, setExpensesTotal] = React.useState(storedExpensesTotal)
-  const [showForm, setShowForm] = React.useState(false)
+  const [expensesTotal, setExpensesTotal] = useState(storedExpensesTotal)
+  const [showForm, setShowForm] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const storedIncomeTotal = JSON.parse(sessionStorage.getItem("incomeTotal"))
     if (storedIncomeTotal && storedIncomeTotal.totalDaily) {
       setShowForm(true)
@@ -26,19 +27,11 @@ const AccordionExpenses = () => {
 
     const vitalExpenses = JSON.parse(sessionStorage.getItem("expensesvital"))
     const houseExpenses = JSON.parse(sessionStorage.getItem("expenseshouse"))
-    const transportExpenses = JSON.parse(
-      sessionStorage.getItem("expensestransport")
-    )
-    const investmentsExpenses = JSON.parse(
-      sessionStorage.getItem("expensesinvestments")
-    )
-    const charityExpenses = JSON.parse(
-      sessionStorage.getItem("expensescharity")
-    )
+    const transportExpenses = JSON.parse(sessionStorage.getItem("expensestransport"))
+    const investmentsExpenses = JSON.parse(sessionStorage.getItem("expensesinvestments"))
+    const charityExpenses = JSON.parse(sessionStorage.getItem("expensescharity"))
     const otherExpenses = JSON.parse(sessionStorage.getItem("expensesother"))
-    const waistedExpenses = JSON.parse(
-      sessionStorage.getItem("expenseswaisted")
-    )
+    const waistedExpenses = JSON.parse(sessionStorage.getItem("expenseswaisted"))
 
     const totalMonthly =
       vitalExpenses?.total.monthly +
@@ -70,6 +63,7 @@ const AccordionExpenses = () => {
       JSON.stringify({ totalMonthly, totalDaily, totalYearly })
     )
   }
+
 
   return showForm ? (
     <div>

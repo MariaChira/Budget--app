@@ -1,6 +1,6 @@
 import React from 'react';
 import AccordionExpenses from '../../components/accordionExpenses/accordionExpenses';
-import "./expenses.css";
+import "./expenses.css"
 
 
 const Expenses = () => {
