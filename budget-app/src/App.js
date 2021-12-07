@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -9,8 +9,6 @@ import Home from "./pages/home/home";
 import Income from "./pages/income/income";
 import Balance from "./pages/balance/balance";
 import FourZeroFour from "./pages/fourZeroFour/fourZeroFour";
-
-import { Button } from "react-bootstrap";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -82,7 +80,6 @@ function App() {
     sessionStorage.setItem("expensescharity", JSON.stringify(initObj));
     sessionStorage.setItem("expensesother", JSON.stringify(initObj));
     sessionStorage.setItem("expenseswaisted", JSON.stringify(initObj));
-   
     sessionStorage.setItem("incomeTotal", JSON.stringify(incomeTotalObj));
     sessionStorage.setItem("expensesTotal", JSON.stringify(expensesTotalObj));
   }, []);

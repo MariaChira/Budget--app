@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Accordion, Button } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import AccordionCard from "../accordionCard/accordionCard";
 import CardIncome from "../cardIncome/cardIncome";
 import DescriptionCard from "../descriptionCard/descriptionCard";
@@ -27,17 +27,9 @@ const AccordionIncome = () => {
       JSON.stringify({ totalMonthly, totalDaily, totalYearly })
     );
   }
-  // const resetNumbers = () => {
-  //   const totalM = 0;
-  //   const totalY = 0;
-  //   const totalD = 0;
-
-  //   setIncomeTotal({totalM, totalY, totalD})
-  // };
 
   return (
     <div>
-      {/* <Button variant="dark" onClick={resetNumbers}>Reset your numbers</Button> */}
       <Accordion>
         <AccordionCard cardTitle="Active Income" eventKeyNo="1">
           <CardIncome handleOnChange={contentChange} incomeType="active" />
