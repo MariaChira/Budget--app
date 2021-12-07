@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import Home from "./pages/home/home";
 import Income from "./pages/income/income";
 import Balance from "./pages/balance/balance";
 import FourZeroFour from "./pages/fourZeroFour/fourZeroFour";
+
+import { Button } from "react-bootstrap";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -53,10 +55,23 @@ function App() {
       daily: 0,
       monthly: 0,
       yearly: 0,
-    },
+    }
   };
 
+  const incomeTotalObj = {
+      totalDaily: 0,
+      totalMonthly: 0,
+      totalYearly: 0,
+    
+  }
+  const expensesTotalObj = {
+      totalDaily: 0,
+      totalMonthly: 0,
+      totalYearly: 0,
+  }
+
   useEffect(() => {
+    sessionStorage.clear()
     document.title = "Buget-app";
     sessionStorage.setItem("incomeactive", JSON.stringify(initObj));
     sessionStorage.setItem("incomepasive", JSON.stringify(initObj));
@@ -67,6 +82,9 @@ function App() {
     sessionStorage.setItem("expensescharity", JSON.stringify(initObj));
     sessionStorage.setItem("expensesother", JSON.stringify(initObj));
     sessionStorage.setItem("expenseswaisted", JSON.stringify(initObj));
+   
+    sessionStorage.setItem("incomeTotal", JSON.stringify(incomeTotalObj));
+    sessionStorage.setItem("expensesTotal", JSON.stringify(expensesTotalObj));
   }, []);
 
   return (
@@ -75,7 +93,7 @@ function App() {
         <Header links={links} />
         <Switch>
           {links.map((link) => (
-            <Route key={link.label} exact path={link.path}>
+            <Route key={link.label} exact path={link.path} initObj={initObj}>
               {link.component}
             </Route>
           ))}

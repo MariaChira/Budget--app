@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import { Container, InputGroup, FormControl } from "react-bootstrap";
+import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
 
 const CardExpenses = (props) => {
   const expensesObj = {
@@ -82,8 +82,9 @@ const CardExpenses = (props) => {
     if (props.handleOnChange && props.expensesType)
       props.handleOnChange(tempObj, props.expensesType);
   };
-
+  
   return (
+    <div>
     <Container className="expenses-container">
       <InputGroup className="mb-1">
         <FormControl
@@ -196,6 +197,7 @@ const CardExpenses = (props) => {
         />
       </InputGroup>
     </Container>
+    </div>
   );
 };
 

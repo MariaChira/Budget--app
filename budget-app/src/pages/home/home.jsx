@@ -14,7 +14,7 @@ const Home = () => {
               href="https://adrian.asoltanie.com/lista-cursuri/"
               className="learn-more"
               target="_blank"
-            >
+              rel="noreferrer">
               Learn more
             </a>
           </Button>

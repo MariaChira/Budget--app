@@ -3,20 +3,26 @@ import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
 function Header(props) {
+  
+  
   return (
     <div className="header-container">
       <div className="contact-icons">
-        <a href="https://github.com/MariaChira" target="_blank">
+     
+        <a href="https://github.com/MariaChira" target="_blank" rel="noreferrer">
           <FontAwesomeIcon icon={["fab", "github"]}></FontAwesomeIcon>
         </a>
         <a
           href="https://www.linkedin.com/in/maria-chira-1a62a0172/"
           target="_blank"
+          rel="noreferrer"
         >
           <FontAwesomeIcon icon={["fab", "linkedin"]} />
         </a>
-        <a href="https://www.instagram.com/mariageagulea/" target="_blank">
+        <a href="https://www.instagram.com/mariageagulea/" target="_blank" rel="noreferrer"> 
           <FontAwesomeIcon icon={["fab", "instagram"]} />
         </a>
       </div>
