@@ -1,37 +1,44 @@
-import React, { useState, useEffect }from "react"
+import React, { useState, useEffect } from "react";
 
-import { Accordion } from "react-bootstrap"
-import AccordionCard from "../accordionCard/accordionCard"
-import CardExpenses from "../cardExpenses/cardExpenses"
+import { Accordion } from "react-bootstrap";
+import AccordionCard from "../accordionCard/accordionCard";
+import CardExpenses from "../cardExpenses/cardExpenses";
 
-import DescriptionCard from "../descriptionCard/descriptionCard"
-import ExpensesTotal from "./expensesTotal"
+import DescriptionCard from "../descriptionCard/descriptionCard";
+import ExpensesTotal from "./expensesTotal";
 
 const AccordionExpenses = () => {
- 
   const storedExpensesTotal = JSON.parse(
     sessionStorage.getItem("expensesTotal")
-  )
-  const [expensesTotal, setExpensesTotal] = useState(storedExpensesTotal)
-  const [showForm, setShowForm] = useState(false)
+  );
+  const [expensesTotal, setExpensesTotal] = useState(storedExpensesTotal);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const storedIncomeTotal = JSON.parse(sessionStorage.getItem("incomeTotal"))
+    const storedIncomeTotal = JSON.parse(sessionStorage.getItem("incomeTotal"));
     if (storedIncomeTotal && storedIncomeTotal.totalDaily) {
-      setShowForm(true)
+      setShowForm(true);
     }
-  }, [])
+  }, []);
 
   function contentChange(data, id) {
-    sessionStorage.setItem(`expenses${id}`, JSON.stringify(data))
+    sessionStorage.setItem(`expenses${id}`, JSON.stringify(data));
 
-    const vitalExpenses = JSON.parse(sessionStorage.getItem("expensesvital"))
-    const houseExpenses = JSON.parse(sessionStorage.getItem("expenseshouse"))
-    const transportExpenses = JSON.parse(sessionStorage.getItem("expensestransport"))
-    const investmentsExpenses = JSON.parse(sessionStorage.getItem("expensesinvestments"))
-    const charityExpenses = JSON.parse(sessionStorage.getItem("expensescharity"))
-    const otherExpenses = JSON.parse(sessionStorage.getItem("expensesother"))
-    const waistedExpenses = JSON.parse(sessionStorage.getItem("expenseswaisted"))
+    const vitalExpenses = JSON.parse(sessionStorage.getItem("expensesvital"));
+    const houseExpenses = JSON.parse(sessionStorage.getItem("expenseshouse"));
+    const transportExpenses = JSON.parse(
+      sessionStorage.getItem("expensestransport")
+    );
+    const investmentsExpenses = JSON.parse(
+      sessionStorage.getItem("expensesinvestments")
+    );
+    const charityExpenses = JSON.parse(
+      sessionStorage.getItem("expensescharity")
+    );
+    const otherExpenses = JSON.parse(sessionStorage.getItem("expensesother"));
+    const waistedExpenses = JSON.parse(
+      sessionStorage.getItem("expenseswaisted")
+    );
 
     const totalMonthly =
       vitalExpenses?.total.monthly +
@@ -40,7 +47,7 @@ const AccordionExpenses = () => {
       investmentsExpenses?.total.monthly +
       charityExpenses?.total.monthly +
       otherExpenses?.total.monthly +
-      waistedExpenses?.total.monthly
+      waistedExpenses?.total.monthly;
     const totalDaily =
       vitalExpenses?.total.daily +
       houseExpenses?.total.daily +
@@ -48,7 +55,7 @@ const AccordionExpenses = () => {
       investmentsExpenses?.total.daily +
       charityExpenses?.total.daily +
       otherExpenses?.total.daily +
-      waistedExpenses?.total.daily
+      waistedExpenses?.total.daily;
     const totalYearly =
       vitalExpenses?.total.yearly +
       houseExpenses?.total.yearly +
@@ -56,14 +63,13 @@ const AccordionExpenses = () => {
       investmentsExpenses?.total.yearly +
       charityExpenses?.total.yearly +
       otherExpenses?.total.yearly +
-      waistedExpenses?.total.yearly
-    setExpensesTotal({ totalMonthly, totalDaily, totalYearly })
+      waistedExpenses?.total.yearly;
+    setExpensesTotal({ totalMonthly, totalDaily, totalYearly });
     sessionStorage.setItem(
       "expensesTotal",
       JSON.stringify({ totalMonthly, totalDaily, totalYearly })
-    )
+    );
   }
-
 
   return showForm ? (
     <div>
@@ -116,7 +122,7 @@ const AccordionExpenses = () => {
     </div>
   ) : (
     <div className="warrning-style">Please write your income first</div>
-  )
-}
+  );
+};
 
-export default AccordionExpenses
+export default AccordionExpenses;

@@ -1,15 +1,13 @@
-import React from 'react';
-import AccordionExpenses from '../../components/accordionExpenses/accordionExpenses';
-import "./expenses.css"
-
+import React from "react";
+import AccordionExpenses from "../../components/accordionExpenses/accordionExpenses";
+import "./expenses.css";
 
 const Expenses = () => {
-    return (
+  return (
     <div className="container-expenses">
-        <AccordionExpenses>
-        </AccordionExpenses>
+      <AccordionExpenses></AccordionExpenses>
     </div>
-    )
-}
+  );
+};
 
 export default Expenses;

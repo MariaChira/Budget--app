@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
-import { Container, FormControl, InputGroup } from "react-bootstrap"
-import "./cardIncome.css"
+import React, { useEffect, useState } from "react";
+import { Container, FormControl, InputGroup } from "react-bootstrap";
+import "./cardIncome.css";
 
 const CardIncome = (props) => {
   const incomeObj = {
@@ -13,65 +13,65 @@ const CardIncome = (props) => {
       monthly: 0,
       yearly: 0,
     },
-  }
-  const [incomeUserData, setIncomeUserData] = useState(incomeObj)
+  };
+  const [incomeUserData, setIncomeUserData] = useState(incomeObj);
 
   useEffect(() => {
     const incomeData = JSON.parse(
       sessionStorage.getItem(`income${props.incomeType}`)
-    )
+    );
     if (incomeData) {
-      setIncomeUserData(incomeData)
+      setIncomeUserData(incomeData);
     }
-  }, [])
+  }, []);
 
   const handleOnChange = (whichOne, value) => {
-    const tempObj = { ...incomeUserData }
+    const tempObj = { ...incomeUserData };
 
     switch (whichOne) {
       case "first-monthly-income":
-        tempObj.monthly[0] = value ? Number(value) : 0
-        tempObj.yearly[0] = value ? Number(value) * 12 : 0
-        tempObj.daily[0] = value ? Number(Math.round(value / 21)) : 0
-        break
+        tempObj.monthly[0] = value ? Number(value) : 0;
+        tempObj.yearly[0] = value ? Number(value) * 12 : 0;
+        tempObj.daily[0] = value ? Number(Math.round(value / 21)) : 0;
+        break;
       case "second-monthly-income":
-        tempObj.monthly[1] = value ? Number(value) : 0
-        tempObj.yearly[1] = value ? Number(value) * 12 : 0
-        tempObj.daily[1] = value ? Number(Math.round(value / 21)) : 0
-        break
+        tempObj.monthly[1] = value ? Number(value) : 0;
+        tempObj.yearly[1] = value ? Number(value) * 12 : 0;
+        tempObj.daily[1] = value ? Number(Math.round(value / 21)) : 0;
+        break;
       case "third-monthly-income":
-        tempObj.monthly[2] = value ? Number(value) : 0
-        tempObj.yearly[2] = value ? Number(value) * 12 : 0
-        tempObj.daily[2] = value ? Number(Math.round(value / 21)) : 0
-        break
+        tempObj.monthly[2] = value ? Number(value) : 0;
+        tempObj.yearly[2] = value ? Number(value) * 12 : 0;
+        tempObj.daily[2] = value ? Number(Math.round(value / 21)) : 0;
+        break;
       case "name-income-0":
       case "name-income-1":
       case "name-income-2":
-        console.log(whichOne.slice(-1), value)
-        const index = whichOne.slice(-1)
-        tempObj.name[Number(index)] = value
-        break
+        console.log(whichOne.slice(-1), value);
+        const index = whichOne.slice(-1);
+        tempObj.name[Number(index)] = value;
+        break;
       default:
-        break
+        break;
     }
 
     const totalMonthly = tempObj.monthly.reduce(
       (prev, current) => prev + current
-    )
-    const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
-    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current)
+    );
+    const totalYearly = tempObj.yearly.reduce(
+      (prev, current) => prev + current
+    );
+    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current);
 
     tempObj.total = {
       daily: totalDaily,
       monthly: totalMonthly,
       yearly: totalYearly,
-    }
-    setIncomeUserData(tempObj)
+    };
+    setIncomeUserData(tempObj);
     if (props.handleOnChange && props.incomeType)
-      props.handleOnChange(tempObj, props.incomeType)
-  }
-
-  
+      props.handleOnChange(tempObj, props.incomeType);
+  };
 
   return (
     <Container className="income-container">
@@ -87,8 +87,8 @@ const CardIncome = (props) => {
           aria-label="Name"
           placeholder={incomeUserData?.name[0] || "Income Name"}
           onChange={(e) => {
-            handleOnChange("name-income-0", e.target.value)
-            console.log(e.target.value)
+            handleOnChange("name-income-0", e.target.value);
+            console.log(e.target.value);
           }}
         />
         <FormControl
@@ -185,7 +185,7 @@ const CardIncome = (props) => {
         />
       </InputGroup>
     </Container>
-  )
-}
+  );
+};
 
-export default CardIncome
+export default CardIncome;

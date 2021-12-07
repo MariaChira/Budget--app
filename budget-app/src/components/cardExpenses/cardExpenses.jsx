@@ -1,7 +1,7 @@
-import React from "react"
-import { useState, useEffect } from "react"
+import React from "react";
+import { useState, useEffect } from "react";
 
-import { Container, InputGroup, FormControl } from "react-bootstrap"
+import { Container, InputGroup, FormControl } from "react-bootstrap";
 
 const CardExpenses = (props) => {
   const expensesObj = {
@@ -14,76 +14,74 @@ const CardExpenses = (props) => {
       monthly: 0,
       yearly: 0,
     },
-  }
+  };
 
-  const [expensesUserData, setExpensesUserData] = useState(expensesObj)
-  const incomeTotalData = JSON.parse(sessionStorage.getItem("incomeTotal"))
+  const [expensesUserData, setExpensesUserData] = useState(expensesObj);
+  const incomeTotalData = JSON.parse(sessionStorage.getItem("incomeTotal"));
 
   useEffect(() => {
     const expensesData = JSON.parse(
       sessionStorage.getItem(`expenses${props.expensesType}`)
-    )
+    );
     if (expensesData) {
-      setExpensesUserData(expensesData)
+      setExpensesUserData(expensesData);
     }
-   
-  }, [])
+  }, []);
 
   const handleOnChange = (whichOne, value) => {
-    const tempObj = { ...expensesUserData }
-    let incomeTotalDaily = 0
-    if (incomeTotalData) incomeTotalDaily = incomeTotalData.totalDaily
+    const tempObj = { ...expensesUserData };
+    let incomeTotalDaily = 0;
+    if (incomeTotalData) incomeTotalDaily = incomeTotalData.totalDaily;
     switch (whichOne) {
       case "first-monthly-expenses":
-        tempObj.monthly[0] = value ? Number(value) : 0
-        tempObj.yearly[0] = value ? Number(value) * 12 : 0
+        tempObj.monthly[0] = value ? Number(value) : 0;
+        tempObj.yearly[0] = value ? Number(value) * 12 : 0;
         tempObj.daily[0] = value
           ? Number(Math.round(tempObj.yearly[0] / incomeTotalDaily))
-          : 0
-        break
+          : 0;
+        break;
       case "second-monthly-expenses":
-        tempObj.monthly[1] = value ? Number(value) : 0
-        tempObj.yearly[1] = value ? Number(value) * 12 : 0
+        tempObj.monthly[1] = value ? Number(value) : 0;
+        tempObj.yearly[1] = value ? Number(value) * 12 : 0;
         tempObj.daily[1] = value
           ? Number(Math.round(tempObj.yearly[1] / incomeTotalDaily))
-          : 0
-        break
+          : 0;
+        break;
       case "third-monthly-expenses":
-        tempObj.monthly[2] = value ? Number(value) : 0
-        tempObj.yearly[2] = value ? Number(value) * 12 : 0
+        tempObj.monthly[2] = value ? Number(value) : 0;
+        tempObj.yearly[2] = value ? Number(value) * 12 : 0;
         tempObj.daily[2] = value
           ? Number(Math.round(tempObj.yearly[2] / incomeTotalDaily))
-          : 0
-        break
-        case "name-expenses-0":
-        case "name-expenses-1":
-        case "name-expenses-2":
-        console.log(whichOne.slice(-1), value)
-        const index = whichOne.slice(-1)
-        tempObj.name[Number(index)] = value
+          : 0;
+        break;
+      case "name-expenses-0":
+      case "name-expenses-1":
+      case "name-expenses-2":
+        console.log(whichOne.slice(-1), value);
+        const index = whichOne.slice(-1);
+        tempObj.name[Number(index)] = value;
         break;
 
       default:
-        break
+        break;
     }
-
-    
 
     const totalMonthly = tempObj.monthly.reduce(
       (prev, current) => prev + current
-    )
-    const totalYearly = tempObj.yearly.reduce((prev, current) => prev + current)
-    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current) 
+    );
+    const totalYearly = tempObj.yearly.reduce(
+      (prev, current) => prev + current
+    );
+    const totalDaily = tempObj.daily.reduce((prev, current) => prev + current);
     tempObj.total = {
       daily: totalDaily,
       monthly: totalMonthly,
       yearly: totalYearly,
-    }
-    setExpensesUserData(tempObj)
+    };
+    setExpensesUserData(tempObj);
     if (props.handleOnChange && props.expensesType)
-      props.handleOnChange(tempObj, props.expensesType)
-  }
- 
+      props.handleOnChange(tempObj, props.expensesType);
+  };
 
   return (
     <Container className="expenses-container">
@@ -198,7 +196,7 @@ const CardExpenses = (props) => {
         />
       </InputGroup>
     </Container>
-  )
-}
+  );
+};
 
-export default CardExpenses
+export default CardExpenses;

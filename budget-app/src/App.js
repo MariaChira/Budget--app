@@ -1,24 +1,20 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import Expenses from "./pages/expenses/expenses";
+import Home from "./pages/home/home";
+import Income from "./pages/income/income";
+import Balance from "./pages/balance/balance";
+import FourZeroFour from "./pages/fourZeroFour/fourZeroFour";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
-import Header from "./components/header/header"
-import Footer from "./components/footer/footer"
-import Expenses from "./pages/expenses/expenses"
-import Home from "./pages/home/home"
-import Income from "./pages/income/income"
-import Balance from "./pages/balance/balance"
-import FourZeroFour from "./pages/fourZeroFour/fourZeroFour"
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
-
-library.add(fab, faCheckSquare, faCoffee)
-
-
+library.add(fab, faCheckSquare, faCoffee);
 
 function App() {
   const links = [
@@ -46,7 +42,7 @@ function App() {
       label: "Balance",
       component: () => <Balance />,
     },
-  ]
+  ];
 
   const initObj = {
     daily: [0, 0, 0],
@@ -58,23 +54,23 @@ function App() {
       monthly: 0,
       yearly: 0,
     },
-  }
+  };
 
   useEffect(() => {
-    sessionStorage.setItem("incomeactive", JSON.stringify(initObj))
-    sessionStorage.setItem("incomepasive", JSON.stringify(initObj))
-    sessionStorage.setItem("expensesvital", JSON.stringify(initObj))
-    sessionStorage.setItem("expenseshouse", JSON.stringify(initObj))
-    sessionStorage.setItem("expensestransport", JSON.stringify(initObj))
-    sessionStorage.setItem("expensesinvestments", JSON.stringify(initObj))
-    sessionStorage.setItem("expensescharity", JSON.stringify(initObj))
-    sessionStorage.setItem("expensesother", JSON.stringify(initObj))
-    sessionStorage.setItem("expenseswaisted", JSON.stringify(initObj))
-  }, [])
+    document.title = "Buget-app";
+    sessionStorage.setItem("incomeactive", JSON.stringify(initObj));
+    sessionStorage.setItem("incomepasive", JSON.stringify(initObj));
+    sessionStorage.setItem("expensesvital", JSON.stringify(initObj));
+    sessionStorage.setItem("expenseshouse", JSON.stringify(initObj));
+    sessionStorage.setItem("expensestransport", JSON.stringify(initObj));
+    sessionStorage.setItem("expensesinvestments", JSON.stringify(initObj));
+    sessionStorage.setItem("expensescharity", JSON.stringify(initObj));
+    sessionStorage.setItem("expensesother", JSON.stringify(initObj));
+    sessionStorage.setItem("expenseswaisted", JSON.stringify(initObj));
+  }, []);
 
   return (
     <div>
-      
       <Router>
         <Header links={links} />
         <Switch>
@@ -90,7 +86,7 @@ function App() {
         <Footer />
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

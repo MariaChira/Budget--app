@@ -1,4 +1,11 @@
 .not-found-container {
-   min-height: 405px;
-   
+  min-height: 405px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h1 {
+  color: rgb(75, 75, 75);
+  font-size: 3rem;
 }

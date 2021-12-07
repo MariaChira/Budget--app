@@ -2,12 +2,11 @@
   text-align: right;
   font-size: 30px;
   padding: 10px;
-  
 }
 
 svg {
   margin: 5px;
-  color:rgb(71, 71, 71);
+  color: rgb(71, 71, 71);
 }
 
 .wrapper {
@@ -40,7 +39,6 @@ svg {
 }
 .navbar a.active {
   font-size: 1.2rem;
-  color:#777;
-  font-weight:500;
+  color: #777;
+  font-weight: 500;
 }
-

@@ -1,8 +1,7 @@
-import React from "react"
-import { Card, Accordion } from "react-bootstrap"
+import React from "react";
+import { Card, Accordion } from "react-bootstrap";
 
 const AccordionCard = (props) => {
- 
   return (
     <Card>
       <Accordion.Toggle as={Card.Header} eventKey={props.eventKeyNo}>
@@ -11,10 +10,9 @@ const AccordionCard = (props) => {
 
       <Accordion.Collapse eventKey={props.eventKeyNo}>
         <Card.Body>{props.children}</Card.Body>
-    
       </Accordion.Collapse>
     </Card>
-  )
-}
+  );
+};
 
-export default AccordionCard
+export default AccordionCard;
