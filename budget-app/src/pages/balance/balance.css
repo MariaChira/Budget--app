@@ -1,0 +1,19 @@
+.balance-container {
+  margin: 10px 20px;
+}
+
+.balance-message {
+  min-height: 350px;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+  font-weight: 700;
+  color: #777; 
+}
+
+.positive {
+  color:rgb(89, 204, 89);
+}
+.negative {
+  color: rgb(185, 72, 72);
+}
