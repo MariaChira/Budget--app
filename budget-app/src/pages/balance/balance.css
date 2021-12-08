@@ -11,3 +11,9 @@
   color: #777; 
 }
 
+.positive {
+  color:rgb(89, 204, 89);
+}
+.negative {
+  color: rgb(185, 72, 72);
+}

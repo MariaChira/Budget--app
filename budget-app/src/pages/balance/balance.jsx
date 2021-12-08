@@ -106,20 +106,18 @@ const Balance = () => {
 
       {incomeTotal?.totalMonthly - expensesTotal?.totalMonthly > 0 ? (
         <div className="balance-message">
-          <p>Your balance is positive, you are doing a good job!</p>
+          <p>Your balance is <span className="positive">positive</span>, you are doing a good job!</p>
         </div>
       ) : incomeTotal?.totalMonthly - expensesTotal?.totalMonthly !== 0 ?(
         <div className="balance-message">
-          <p>Your balance is not positive. Here is some financial guidance!</p>
+          <p>Your balance is <span className="negative">negative</span>. Here is some financial guidance!</p>
           <a
             href="https://www.investopedia.com/best-personal-finance-classes-5116631"
             target="blank" rel="noreferrer">
             <Button variant="dark">Learn about money</Button>
           </a>
         </div>
-      ) : <div className="balance-message">
-        <p>Go and write your income and expenses</p>
-      </div>} 
+      ) : <div className="balance-message"></div>} 
     </div>
   );
 };
