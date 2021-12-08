@@ -26,7 +26,7 @@ const Home = () => {
           <Col>
             <Card className="card-instruction">
               <Card.Text>
-                <span>
+                <span className="home-card-text">
                   How many financial legs do you stand on? How many sources of
                   income do you have? For a family, 3 or more is recommended.
                 </span>
