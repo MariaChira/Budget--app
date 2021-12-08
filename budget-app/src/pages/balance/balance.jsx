@@ -11,13 +11,13 @@ const Balance = () => {
     <div className="container-budget">
       <div className="balance-container">
         <InputGroup className="mb-1">
-          <FormControl aria-label="Labels" disabled />
+          <FormControl aria-label="Labels" value="Total" disabled />
           <FormControl aria-label="Month" value="Per Month" disabled />
           <FormControl aria-label="Year" value="Per Year" disabled />
           <FormControl aria-label="Day" value="Per Day" disabled />
         </InputGroup>
         <InputGroup className="mb-1">
-          <FormControl aria-label="total" value="Total Income" disabled />
+          <FormControl aria-label="total" value="Income" disabled />
           <FormControl
             className="year-day"
             aria-label="total-month"
@@ -42,13 +42,13 @@ const Balance = () => {
           />
         </InputGroup>
         <InputGroup className="mb-1">
-          <FormControl aria-label="Labels" disabled />
+        <FormControl aria-label="Labels" value="Total" disabled />
           <FormControl aria-label="Month" value="Per Month" disabled />
           <FormControl aria-label="Year" value="Per Year" disabled />
           <FormControl aria-label="Day" value="Days worked" disabled />
         </InputGroup>
         <InputGroup className="mb-1">
-          <FormControl aria-label="total" value="Total Expenses" disabled />
+          <FormControl aria-label="total" value="Expenses" disabled />
           <FormControl
             className="year-day"
             aria-label="total-month"
@@ -72,7 +72,7 @@ const Balance = () => {
           />
         </InputGroup>
         <InputGroup className="mb-1">
-          <FormControl aria-label="Labels" disabled />
+        <FormControl aria-label="Labels" value="Total" disabled />
           <FormControl aria-label="Month" value="Per Month" disabled />
           <FormControl aria-label="Year" value="Per Year" disabled />
           <FormControl aria-label="Day" value="Days Left" disabled />
@@ -98,7 +98,7 @@ const Balance = () => {
             aria-label="total-day"
             placeholder="days left"
             readOnly
-            value={expensesTotal?.totalDaily > 0 ? 260 - expensesTotal?.totalDaily : 0}
+            value={expensesTotal?.totalDaily > 0 ? 252 - expensesTotal?.totalDaily : 0}
           />
         </InputGroup>
       </div>

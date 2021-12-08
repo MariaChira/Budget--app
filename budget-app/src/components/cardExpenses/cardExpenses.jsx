@@ -1,7 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
-
-import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, InputGroup, FormControl } from "react-bootstrap";
 
 const CardExpenses = (props) => {
   const expensesObj = {
@@ -89,7 +87,7 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Expenses Name"
-          value="Expenses Name"
+          value="Expenses"
           disabled
         />
         <FormControl aria-label="Month" value="Month" disabled />
@@ -100,12 +98,12 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder={expensesUserData?.name[0] || "Expense Name"}
+          placeholder={expensesUserData?.name[0] || "Name"}
           onChange={(e) => handleOnChange("name-expenses-0", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder={expensesUserData?.monthly[0] || "Monthly Expenses"}
+          placeholder={expensesUserData?.monthly[0] || "Amount"}
           onChange={(e) =>
             handleOnChange("first-monthly-expenses", e.target.value)
           }
@@ -127,12 +125,12 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder={expensesUserData?.name[1] || "Expense Name"}
+          placeholder={expensesUserData?.name[1] || "Name"}
           onChange={(e) => handleOnChange("name-expenses-1", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder={expensesUserData?.monthly[1] || "Monthly Expenses"}
+          placeholder={expensesUserData?.monthly[1] || "Amount"}
           onChange={(e) =>
             handleOnChange("second-monthly-expenses", e.target.value)
           }
@@ -154,12 +152,12 @@ const CardExpenses = (props) => {
       <InputGroup className="mb-1">
         <FormControl
           aria-label="Name"
-          placeholder={expensesUserData?.name[2] || "Expense Name"}
+          placeholder={expensesUserData?.name[2] || "Name"}
           onChange={(e) => handleOnChange("name-expenses-2", e.target.value)}
         />
         <FormControl
           aria-label="Month"
-          placeholder={expensesUserData?.monthly[2] || "Monthly Expenses"}
+          placeholder={expensesUserData?.monthly[2] || "Amount"}
           onChange={(e) =>
             handleOnChange("third-monthly-expenses", e.target.value)
           }

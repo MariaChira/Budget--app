@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./income.css"
 import AccordionIncome from "../../components/accordionIncome/accordionIncome";
 
 const Income = () => {

@@ -1,13 +1,11 @@
 .income-container {
   width: 100%;
   margin: 0px;
-  /* border: 2px solid grey; */
 }
 .income-container.container {
   margin: 0 auto;
 }
 .enabled-input {
-  /* width: 100px; */
   border: 1px solid rgb(196, 196, 197);
 }
 .card-body {
@@ -41,3 +39,15 @@ input.year-day.form-control {
 .text-description-card {
   padding: 0 2rem;
 }
+
+@media screen and (max-width: 850px) {
+  input.form-control {
+    font-size:13px;
+  }
+ }
+
+ @media screen and (max-width: 350px) {
+  input.form-control {
+    font-size:11px;
+  }
+ }

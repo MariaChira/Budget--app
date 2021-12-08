@@ -27,3 +27,9 @@ code {
   font-size: 24px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 850px) {
+  .warrning-style {
+    width: 95vw;
+  }
+}

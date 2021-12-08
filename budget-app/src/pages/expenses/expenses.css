@@ -1,3 +1,9 @@
 .container-expenses {
   min-height: 750px;
 }
+
+@media screen and (max-width: 850px) {
+  .container-expenses {
+      min-height: 800px;
+  }
+ }
