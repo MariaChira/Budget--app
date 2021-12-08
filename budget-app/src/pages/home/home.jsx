@@ -27,8 +27,8 @@ const Home = () => {
             <Card className="card-instruction">
               <Card.Text>
                 <span>
-                  How many financial legs do you stand on? How many source of
-                  income do you have? It is recommended at least 3 for a family.
+                  How many financial legs do you stand on? How many sources of
+                  income do you have? For a family, 3 or more is recommended.
                 </span>
               </Card.Text>
             </Card>
@@ -38,7 +38,7 @@ const Home = () => {
               <Card.Text>
                 <span>
                   Do you only have active income? Then you are caught in the rat
-                  race. Build passive income in time.
+                  race. Start building passive income.
                 </span>
               </Card.Text>
             </Card>
@@ -47,8 +47,7 @@ const Home = () => {
             <Card className="card-instruction">
               <Card.Text>
                 <span>
-                  How much money goes through your hands in 12 months? On what
-                  do they go to and how many stop at you?
+                  How much money goes through your hands in 12 months? What do you spend them on and how much do you save?
                 </span>
               </Card.Text>
             </Card>
@@ -68,8 +67,8 @@ const Home = () => {
               <Card.Text>
                 <span>
                   {" "}
-                  Your safety fund should be your total month expenses * 6 and
-                  your emergency fund should be 1500-2000 RON{" "}
+                  Your safety fund should be your total monthly expenses times 6 and
+                  your emergency fund should be 1500-2000 RON or 600-700 EUR/USD{" "}
                 </span>
               </Card.Text>
             </Card>
@@ -79,8 +78,7 @@ const Home = () => {
               <Card.Text>
                 <span>
                   {" "}
-                  Divide the money into categories / accounts / envelopes to
-                  separate and track expenses more easily.
+                  Separate your money into categories / accounts / envelopes to track expenses more easily.
                 </span>
               </Card.Text>
             </Card>

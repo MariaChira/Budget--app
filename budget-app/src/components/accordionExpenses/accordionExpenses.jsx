@@ -121,7 +121,7 @@ const AccordionExpenses = () => {
       <ExpensesTotal expensesTotal={expensesTotal} />
     </div>
   ) : (
-    <div className="warrning-style">Please write your income first</div>
+    <div className="warrning-style">Please add your income first</div>
   );
 };
 
