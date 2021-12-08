@@ -12,9 +12,9 @@ const Balance = () => {
       <div className="balance-container">
         <InputGroup className="mb-1">
           <FormControl aria-label="Labels" value="Total" disabled />
-          <FormControl aria-label="Month" value="Per Month" disabled />
-          <FormControl aria-label="Year" value="Per Year" disabled />
-          <FormControl aria-label="Day" value="Per Day" disabled />
+          <FormControl aria-label="Month" value="Monthly" disabled />
+          <FormControl aria-label="Year" value="Yearly" disabled />
+          <FormControl aria-label="Day" value="Daily" disabled />
         </InputGroup>
         <InputGroup className="mb-1">
           <FormControl aria-label="total" value="Income" disabled />
@@ -43,9 +43,9 @@ const Balance = () => {
         </InputGroup>
         <InputGroup className="mb-1">
         <FormControl aria-label="Labels" value="Total" disabled />
-          <FormControl aria-label="Month" value="Per Month" disabled />
-          <FormControl aria-label="Year" value="Per Year" disabled />
-          <FormControl aria-label="Day" value="Days worked" disabled />
+          <FormControl aria-label="Month" value="Monthly" disabled />
+          <FormControl aria-label="Year" value="Yearly" disabled />
+          <FormControl aria-label="Day" value="Days Worked" disabled />
         </InputGroup>
         <InputGroup className="mb-1">
           <FormControl aria-label="total" value="Expenses" disabled />
@@ -73,8 +73,8 @@ const Balance = () => {
         </InputGroup>
         <InputGroup className="mb-1">
         <FormControl aria-label="Labels" value="Total" disabled />
-          <FormControl aria-label="Month" value="Per Month" disabled />
-          <FormControl aria-label="Year" value="Per Year" disabled />
+          <FormControl aria-label="Month" value="Monthly" disabled />
+          <FormControl aria-label="Year" value="Yearly" disabled />
           <FormControl aria-label="Day" value="Days Left" disabled />
         </InputGroup>
         <InputGroup className="mb-1">
