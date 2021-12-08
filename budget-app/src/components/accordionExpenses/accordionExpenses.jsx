@@ -113,8 +113,8 @@ const AccordionExpenses = () => {
           <DescriptionCard text="ex: kindergarten, babysitter, parties, anniversaries, clothes, holidays, hairstyling, restaurants, electronics, furniture, maid, pets, health insurance, life insurance, hobbies" />
         </AccordionCard>
 
-        <AccordionCard cardTitle="Waisted money (0-2%)" eventKeyNo="7">
-          <CardExpenses handleOnChange={contentChange} expensesType="waisted" />
+        <AccordionCard cardTitle="Wasted money (0-2%)" eventKeyNo="7">
+          <CardExpenses handleOnChange={contentChange} expensesType="wasted" />
           <DescriptionCard text="ex: coffee, alchool, tobacco, bets " />
         </AccordionCard>
       </Accordion>
