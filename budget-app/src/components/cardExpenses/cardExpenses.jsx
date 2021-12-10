@@ -55,7 +55,6 @@ const CardExpenses = (props) => {
       case "name-expenses-0":
       case "name-expenses-1":
       case "name-expenses-2":
-        console.log(whichOne.slice(-1), value);
         const index = whichOne.slice(-1);
         tempObj.name[Number(index)] = value;
         break;
@@ -102,6 +101,7 @@ const CardExpenses = (props) => {
           onChange={(e) => handleOnChange("name-expenses-0", e.target.value)}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={expensesUserData?.monthly[0] || "Amount"}
           onChange={(e) =>
@@ -129,6 +129,7 @@ const CardExpenses = (props) => {
           onChange={(e) => handleOnChange("name-expenses-1", e.target.value)}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={expensesUserData?.monthly[1] || "Amount"}
           onChange={(e) =>
@@ -156,6 +157,7 @@ const CardExpenses = (props) => {
           onChange={(e) => handleOnChange("name-expenses-2", e.target.value)}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={expensesUserData?.monthly[2] || "Amount"}
           onChange={(e) =>

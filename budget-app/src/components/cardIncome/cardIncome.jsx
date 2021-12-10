@@ -32,22 +32,21 @@ const CardIncome = (props) => {
       case "first-monthly-income":
         tempObj.monthly[0] = value ? Number(value) : 0;
         tempObj.yearly[0] = value ? Number(value) * 12 : 0;
-        tempObj.daily[0] = value ? Number((value / 21).toFixed(1)) : 0;
+        tempObj.daily[0] = value ? Number(Math.round(value / 21)) : 0;
         break;
       case "second-monthly-income":
         tempObj.monthly[1] = value ? Number(value) : 0;
         tempObj.yearly[1] = value ? Number(value) * 12 : 0;
-        tempObj.daily[1] = value ? Number((value / 21).toFixed(1)) : 0;
+        tempObj.daily[1] = value ? Number(Math.round(value / 21)) : 0;
         break;
       case "third-monthly-income":
         tempObj.monthly[2] = value ? Number(value) : 0;
         tempObj.yearly[2] = value ? Number(value) * 12 : 0;
-        tempObj.daily[2] = value ? Number((value / 21).toFixed(1)) : 0;
+        tempObj.daily[2] = value ? Number(Math.round(value / 21)) : 0;
         break;
       case "name-income-0":
       case "name-income-1":
       case "name-income-2":
-        console.log(whichOne.slice(-1), value);
         const index = whichOne.slice(-1);
         tempObj.name[Number(index)] = value;
         break;
@@ -88,10 +87,10 @@ const CardIncome = (props) => {
           placeholder={incomeUserData?.name[0] || "Name"}
           onChange={(e) => {
             handleOnChange("name-income-0", e.target.value);
-            console.log(e.target.value);
           }}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={incomeUserData?.monthly[0] || "Amount"}
           onChange={(e) =>
@@ -119,6 +118,7 @@ const CardIncome = (props) => {
           onChange={(e) => handleOnChange("name-income-1", e.target.value)}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={incomeUserData?.monthly[1] || "Amount"}
           onChange={(e) =>
@@ -146,6 +146,7 @@ const CardIncome = (props) => {
           onChange={(e) => handleOnChange("name-income-2", e.target.value)}
         />
         <FormControl
+          type="number" min="1" max="999"
           aria-label="Month"
           placeholder={incomeUserData?.monthly[2] || "Amount"}
           onChange={(e) =>

@@ -5,12 +5,14 @@ import "./footer.css";
 const Footer = () => {
   return (
     <div className="footer">
+      <p>App development: &copy; Maria Chira </p>
       <p>
         Content credits: &copy; -{" "}
         <a href="https://adrian.asoltanie.com/gratuit/" target="blank">
           Adrian Asoltanie
         </a>
       </p>
+      
     </div>
   );
 };
