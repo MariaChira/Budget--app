@@ -33,11 +33,11 @@ const AccordionIncome = () => {
       <Accordion>
         <AccordionCard cardTitle="Active Income" eventKeyNo="1">
           <CardIncome handleOnChange={contentChange} incomeType="active" />
-          <DescriptionCard text="ex:salaries, bonuses, commissions"></DescriptionCard>
+          <DescriptionCard text="ex: salaries, bonuses, commissions"></DescriptionCard>
         </AccordionCard>
         <AccordionCard cardTitle="Passive Income" eventKeyNo="2">
           <CardIncome handleOnChange={contentChange} incomeType="passive" />
-          <DescriptionCard text="ex:dividendes, rents, interest, copyright. (you should put the net income, after taxes) "></DescriptionCard>
+          <DescriptionCard text="ex: dividendes, rents, interest, copyright. (you should put the net income, after taxes) "></DescriptionCard>
         </AccordionCard>
       </Accordion>
       <IncomeTotal incomeTotal={incomeTotal} />
